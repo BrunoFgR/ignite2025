@@ -7,7 +7,7 @@ export function Comment() {
       <img src="https://github.com/brunofgr.png" alt="" />
 
       <div className={styles.commentBox}>
-        <div className={styles.commentContext}>
+        <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
               <strong>Bruno Figueiredo</strong>
