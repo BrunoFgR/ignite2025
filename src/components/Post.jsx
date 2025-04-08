@@ -9,7 +9,6 @@ import { useState } from "react";
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState(["Muito massa"]);
   const [newCommentText, setNewCommentText] = useState("");
-  const isNewCommentEmpty = !newCommentText;
 
   const publishedDateFormatted = format(
     publishedAt,
@@ -39,6 +38,8 @@ export function Post({ author, content, publishedAt }) {
     );
     setComments(commentsWithoutDeletedOne);
   }
+
+  const isNewCommentEmpty = !newCommentText;
 
   return (
     <article className={styles.post}>
