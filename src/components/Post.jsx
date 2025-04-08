@@ -9,6 +9,7 @@ import { useState } from "react";
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState(["Muito massa"]);
   const [newCommentText, setNewCommentText] = useState("");
+  const isNewCommentEmpty = !newCommentText;
 
   const publishedDateFormatted = format(
     publishedAt,
@@ -88,7 +89,7 @@ export function Post({ author, content, publishedAt }) {
         />
 
         <footer>
-          <button type="submit" disabled={!newCommentText}>
+          <button type="submit" disabled={isNewCommentEmpty}>
             Comentar
           </button>
         </footer>
