@@ -26,7 +26,7 @@ const posts = [
     publishedAt: new Date("2025-04-04 22:53:00"),
   },
   {
-    id: 2,
+    id: 3,
     author: {
       avatarUrl: "https://avatars.githubusercontent.com/u/12723939?v=4",
       name: "Joao Nascimento",
