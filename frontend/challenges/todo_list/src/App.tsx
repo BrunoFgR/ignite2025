@@ -18,7 +18,7 @@ function App() {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [newTaskText, setNewTaskText] = useState("");
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const newTask: ITask = {
@@ -36,6 +36,11 @@ function App() {
     setNewTaskText(event.target.value);
   }
 
+  function handleDeleteTask(id: number) {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+  }
+
   const isEmpty = newTaskText.length === 0;
 
   return (
@@ -43,7 +48,7 @@ function App() {
       <Header />
 
       <div className={style.wrapper}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleNewTask}>
           <input
             type="text"
             name="task"
@@ -56,7 +61,7 @@ function App() {
           </button>
         </form>
 
-        <Task tasks={tasks} />
+        <Task tasks={tasks} onDelete={handleDeleteTask} />
       </div>
     </div>
   );

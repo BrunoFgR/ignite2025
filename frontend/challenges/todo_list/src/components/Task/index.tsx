@@ -5,9 +5,10 @@ import style from "./index.module.css";
 
 interface TaskProps {
   tasks: ITask[];
+  onDelete: (id: number) => void;
 }
 
-function Task({ tasks }: TaskProps) {
+function Task({ tasks, onDelete }: TaskProps) {
   const taskExist = tasks.length > 0;
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter((task) => task.completed).length;
@@ -33,7 +34,7 @@ function Task({ tasks }: TaskProps) {
       {taskExist ? (
         <div className={style.taskList}>
           {tasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem key={task.id} task={task} onDelete={onDelete} />
           ))}
         </div>
       ) : (

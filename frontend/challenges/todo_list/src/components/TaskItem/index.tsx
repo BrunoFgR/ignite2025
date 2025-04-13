@@ -5,15 +5,19 @@ import { useState } from "react";
 
 interface TaskItemProps {
   task: ITask;
-  // onRemoveTask: (id: number) => void;
+  onDelete: (id: number) => void;
 }
 
-function TaskItem({ task }: TaskItemProps) {
+function TaskItem({ task, onDelete }: TaskItemProps) {
   const [checked, setChecked] = useState(task.completed);
 
   const styleIfchecked = checked
     ? style.customCheckboxChecked
     : style.customCheckbox;
+
+  function handleDelete() {
+    onDelete(task.id);
+  }
 
   return (
     <div className={style.taskItem}>
@@ -26,7 +30,7 @@ function TaskItem({ task }: TaskItemProps) {
         />
         <span className={style.checkmark}></span>
       </label>
-      <button title="Deletar tarefa">
+      <button title="Deletar tarefa" onClick={handleDelete}>
         <Trash size={24} />
       </button>
     </div>
