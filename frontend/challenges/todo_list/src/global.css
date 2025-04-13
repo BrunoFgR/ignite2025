@@ -4,20 +4,20 @@
     --Purple-dark: #5e60ce;
     --Purple: #8284fa;
 
-    --gray-100: #f2f2f2;
-    --gray-200: #d9d9d9;
-    --gray-300: #808080;
-    --gray-400: #333333;
-    --gray-500: #262626;
-    --gray-600: #1a1a1a;
-    --gray-700: #0d0d0d;
+    --Gray-100: #f2f2f2;
+    --Gray-200: #d9d9d9;
+    --Gray-300: #808080;
+    --Gray-400: #333333;
+    --Gray-500: #262626;
+    --Gray-600: #1a1a1a;
+    --Gray-700: #0d0d0d;
 
     --danger: #e25858;
 }
 
 :focus {
     outline: transparent;
-    box-shadow: 0 0 0 2px var(--green-500);
+    box-shadow: 0 0 0 2px var(--Purple-dark);
 }
 
 * {
@@ -28,7 +28,7 @@
 
 body {
     background: var(--Gray-600, #1a1a1a);
-    color: var(--gray-300);
+    color: var(--Gray-300);
     -webkit-font-smoothing: antialiased;
 }
 

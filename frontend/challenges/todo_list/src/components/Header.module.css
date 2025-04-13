@@ -13,7 +13,7 @@
 }
 
 .header div strong {
-    color: var(--blue, #4ea8de);
+    color: var(--Blue, #4ea8de);
     font-family: Inter;
     font-size: 40px;
     font-style: normal;
