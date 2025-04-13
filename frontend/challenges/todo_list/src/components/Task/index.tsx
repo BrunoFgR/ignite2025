@@ -6,14 +6,14 @@ import style from "./index.module.css";
 interface TaskProps {
   tasks: ITask[];
   onDelete: (id: number) => void;
+  onToggleCompletion: (id: number) => void;
 }
 
-function Task({ tasks, onDelete }: TaskProps) {
+function Task({ tasks, onDelete, onToggleCompletion }: TaskProps) {
   const taskExist = tasks.length > 0;
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter((task) => task.completed).length;
-  const completedTasksText =
-    completedTasks !== 0 ? `${completedTasks} de ${totalTasks}` : "0";
+  const completedTasksText = `${completedTasks} de ${totalTasks}`;
 
   return (
     <div className={style.task}>
@@ -34,7 +34,12 @@ function Task({ tasks, onDelete }: TaskProps) {
       {taskExist ? (
         <div className={style.taskList}>
           {tasks.map((task) => (
-            <TaskItem key={task.id} task={task} onDelete={onDelete} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              onDelete={onDelete}
+              onToggleCompletion={onToggleCompletion}
+            />
           ))}
         </div>
       ) : (

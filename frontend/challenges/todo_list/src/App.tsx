@@ -41,6 +41,13 @@ function App() {
     setTasks(updatedTasks);
   }
 
+  function handleToggleTaskCompletion(id: number) {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task,
+    );
+    setTasks(updatedTasks);
+  }
+
   const isEmpty = newTaskText.length === 0;
 
   return (
@@ -61,7 +68,11 @@ function App() {
           </button>
         </form>
 
-        <Task tasks={tasks} onDelete={handleDeleteTask} />
+        <Task
+          tasks={tasks}
+          onDelete={handleDeleteTask}
+          onToggleCompletion={handleToggleTaskCompletion}
+        />
       </div>
     </div>
   );

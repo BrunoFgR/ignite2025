@@ -1,22 +1,24 @@
 import { Trash } from "@phosphor-icons/react";
 import style from "./index.module.css";
 import { ITask } from "../../App";
-import { useState } from "react";
 
 interface TaskItemProps {
   task: ITask;
   onDelete: (id: number) => void;
+  onToggleCompletion: (id: number) => void;
 }
 
-function TaskItem({ task, onDelete }: TaskItemProps) {
-  const [checked, setChecked] = useState(task.completed);
-
-  const styleIfchecked = checked
+function TaskItem({ task, onDelete, onToggleCompletion }: TaskItemProps) {
+  const styleIfchecked = task.completed
     ? style.customCheckboxChecked
     : style.customCheckbox;
 
   function handleDelete() {
     onDelete(task.id);
+  }
+
+  function handleToggleCompletion() {
+    onToggleCompletion(task.id);
   }
 
   return (
@@ -25,8 +27,8 @@ function TaskItem({ task, onDelete }: TaskItemProps) {
         {task.title}
         <input
           type="checkbox"
-          checked={checked}
-          onChange={() => setChecked(!checked)}
+          checked={task.completed}
+          onChange={handleToggleCompletion}
         />
         <span className={style.checkmark}></span>
       </label>
