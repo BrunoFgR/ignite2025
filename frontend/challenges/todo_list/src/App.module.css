@@ -1,6 +1,12 @@
 .wrapper {
-    width: 46rem;
+    max-width: 47rem;
+    width: 100%;
+    min-width: 24.75rem;
+    padding: 0 1rem;
     display: flex;
+    flex-direction: column;
+    /* align-self: center; */
+    gap: 4rem;
     justify-self: center;
     position: relative;
     top: -1.6875rem;
@@ -34,4 +40,12 @@
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 140%;
+}
+
+.wrapper form button:hover {
+    background: var(--Blue, #4ea8de);
+}
+
+.wrapper form button svg {
+    fill: var(--Gray-100, #f2f2f2);
 }

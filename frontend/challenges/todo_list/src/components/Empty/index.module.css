@@ -1,0 +1,26 @@
+.empty {
+    display: flex;
+    padding: 4rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border-top: 1px solid var(--Grey-400, #333);
+}
+
+.empty > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.empty > div > div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 140%; /* 22.4px */
+}
+
+.empty div strong {
+    font-weight: 700;
+}

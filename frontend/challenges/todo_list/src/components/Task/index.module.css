@@ -1,0 +1,50 @@
+.task {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    gap: 1.5rem;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info div div {
+    border-radius: 999px;
+    background: var(--Gray-400, #333);
+    display: flex;
+    padding: 2px 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info div div strong {
+    color: var(--Gray-200, #d9d9d9);
+    font-size: 0.75rem;
+}
+
+.created strong {
+    color: var(--Blue, #4ea8de);
+    font-size: 0.875rem;
+}
+
+.done strong {
+    color: var(--Purple, #8284fa);
+    font-size: 0.875rem;
+}
+
+.taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}

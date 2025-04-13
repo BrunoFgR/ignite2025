@@ -14,11 +14,8 @@
 
 .header div strong {
     color: var(--Blue, #4ea8de);
-    font-family: Inter;
-    font-size: 40px;
-    font-style: normal;
+    font-size: 2.5rem;
     font-weight: 900;
-    line-height: normal;
 }
 
 .header div strong > strong {

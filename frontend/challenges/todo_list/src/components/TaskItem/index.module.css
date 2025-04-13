@@ -1,0 +1,190 @@
+.taskItem {
+    display: flex;
+    gap: 0.75rem;
+    padding: 16px;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid var(--Gray-400, #333);
+    background: var(--Gray-500, #262626);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+}
+
+.customCheckbox {
+    display: block;
+    position: relative;
+    padding-left: 2.25rem;
+    font-size: 0.875rem;
+    line-height: 140%;
+    color: var(--Gray-100);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.customCheckbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.customCheckbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: var(--Gray-400);
+    border: 2px solid var(--Blue, #4ea8de);
+
+    border-radius: 14px;
+}
+
+/* On mouse-over, add a border color */
+.customCheckbox:hover input ~ .checkmark {
+    border-color: var(--Blue-dark, #1e6f9f);
+}
+
+/* When the checkbox is checked, add a purple background */
+.customCheckbox input:checked ~ .checkmark {
+    background: var(--Purple-dark, #5e60ce);
+    border: 2px solid var(--Purple-dark, #5e60ce);
+}
+
+/* When the checkbox is checked, add a purple background */
+.customCheckbox:hover input:checked ~ .checkmark {
+    background: var(--Purple, #8284fa);
+    border: 2px solid var(--Purple, #8284fa);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.customCheckbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.customCheckbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.customCheckbox .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 0.25rem;
+    height: 0.5rem;
+    border: solid var(--Gray-100);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.taskItem button {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.taskItem button:hover {
+    background: var(--Gray-400);
+}
+
+.taskItem button svg {
+    color: var(--Gray-300);
+}
+
+.taskItem button:hover svg {
+    color: var(--Danger);
+}
+
+.customCheckboxChecked {
+    color: var(--Gray-300);
+    text-decoration-line: line-through;
+    display: block;
+    position: relative;
+    padding-left: 2.25rem;
+    font-size: 0.875rem;
+    line-height: 140%;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.customCheckboxChecked input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.customCheckboxChecked .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: var(--Gray-400);
+    border: 2px solid var(--Blue, #4ea8de);
+
+    border-radius: 14px;
+}
+
+/* On mouse-over, add a border color */
+.customCheckboxChecked:hover input ~ .checkmark {
+    border-color: var(--Blue-dark, #1e6f9f);
+}
+
+/* When the checkbox is checked, add a purple background */
+.customCheckboxChecked input:checked ~ .checkmark {
+    background: var(--Purple-dark, #5e60ce);
+    border: 2px solid var(--Purple-dark, #5e60ce);
+}
+
+/* When the checkbox is checked, add a purple background */
+.customCheckboxChecked:hover input:checked ~ .checkmark {
+    background: var(--Purple, #8284fa);
+    border: 2px solid var(--Purple, #8284fa);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.customCheckboxChecked .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.customCheckboxChecked input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.customCheckboxChecked .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 0.25rem;
+    height: 0.5rem;
+    border: solid var(--Gray-100);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
