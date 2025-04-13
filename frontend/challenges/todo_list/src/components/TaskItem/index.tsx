@@ -1,13 +1,15 @@
 import { Trash } from "@phosphor-icons/react";
-import { useState } from "react";
 import style from "./index.module.css";
+import { ITask } from "../../App";
+import { useState } from "react";
 
-function TaskItem() {
-  const [checked, setChecked] = useState(false);
+interface TaskItemProps {
+  task: ITask;
+  // onRemoveTask: (id: number) => void;
+}
 
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
+function TaskItem({ task }: TaskItemProps) {
+  const [checked, setChecked] = useState(task.completed);
 
   const styleIfchecked = checked
     ? style.customCheckboxChecked
@@ -16,16 +18,15 @@ function TaskItem() {
   return (
     <div className={style.taskItem}>
       <label className={styleIfchecked}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-        Duis vel sed fames integer.
+        {task.title}
         <input
           type="checkbox"
           checked={checked}
-          onChange={handleCheckboxChange}
+          onChange={() => setChecked(!checked)}
         />
         <span className={style.checkmark}></span>
       </label>
-      <button>
+      <button title="Deletar tarefa">
         <Trash size={24} />
       </button>
     </div>

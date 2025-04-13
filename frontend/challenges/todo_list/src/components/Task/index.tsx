@@ -1,19 +1,18 @@
+import { ITask } from "../../App";
 import Empty from "../Empty";
 import TaskItem from "../TaskItem";
 import style from "./index.module.css";
 
-interface Task {
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
 interface TaskProps {
-  tasks: Task[];
+  tasks: ITask[];
 }
 
 function Task({ tasks }: TaskProps) {
   const taskExist = tasks.length > 0;
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter((task) => task.completed).length;
+  const completedTasksText =
+    completedTasks !== 0 ? `${completedTasks} de ${totalTasks}` : "0";
 
   return (
     <div className={style.task}>
@@ -21,20 +20,20 @@ function Task({ tasks }: TaskProps) {
         <div className={style.created}>
           <strong>Tarefas criadas</strong>
           <div>
-            <strong>0</strong>
+            <strong>{totalTasks}</strong>
           </div>
         </div>
         <div className={style.done}>
           <strong>Concluídas</strong>
           <div>
-            <strong>0</strong>
+            <strong>{completedTasksText}</strong>
           </div>
         </div>
       </div>
       {taskExist ? (
         <div className={style.taskList}>
           {tasks.map((task) => (
-            <TaskItem key={task.id} />
+            <TaskItem key={task.id} task={task} />
           ))}
         </div>
       ) : (

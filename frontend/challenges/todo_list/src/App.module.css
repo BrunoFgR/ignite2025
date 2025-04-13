@@ -40,10 +40,15 @@
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 140%;
+    cursor: pointer;
 }
 
 .wrapper form button:hover {
     background: var(--Blue, #4ea8de);
+}
+
+.wrapper form button[disabled] {
+    cursor: not-allowed;
 }
 
 .wrapper form button svg {
