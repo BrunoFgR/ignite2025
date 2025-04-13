@@ -49,3 +49,15 @@
 .wrapper form button svg {
     fill: var(--Gray-100, #f2f2f2);
 }
+
+@media (max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+}
+
+@media (max-width: 374px) {
+    html {
+        font-size: 75%;
+    }
+}

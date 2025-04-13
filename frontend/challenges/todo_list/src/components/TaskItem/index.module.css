@@ -178,8 +178,8 @@
 
 /* Style the checkmark/indicator */
 .customCheckboxChecked .checkmark:after {
-    left: 7px;
-    top: 4px;
+    left: 0.4375rem;
+    top: 0.25rem;
     width: 0.25rem;
     height: 0.5rem;
     border: solid var(--Gray-100);
@@ -187,4 +187,18 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+    .customCheckboxChecked .checkmark:after {
+        left: 0.375rem;
+        top: 0.125rem;
+        width: 0.25rem;
+        height: 0.5rem;
+        border: solid var(--Gray-100);
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
 }
