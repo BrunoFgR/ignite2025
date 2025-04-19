@@ -13,7 +13,8 @@ function Task({ tasks, onDelete, onToggleCompletion }: TaskProps) {
   const taskExist = tasks.length > 0;
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter((task) => task.completed).length;
-  const completedTasksText = `${completedTasks} de ${totalTasks}`;
+  const completedTasksText =
+    totalTasks > 0 ? `${completedTasks} de ${totalTasks}` : "0";
 
   return (
     <div className={style.task}>
