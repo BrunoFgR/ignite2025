@@ -8,8 +8,8 @@ import { NewCycleForm, Countdown } from './components'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { CycleContext } from '../../contexts/CycleContext'
 import { useContext } from 'react'
+import { CycleContext } from '../../contexts/CyclesContext'
 
 const cycleValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
