@@ -12,22 +12,35 @@ export function History() {
     interruptedDate: Date | undefined,
   ) => {
     if (finishedDate) {
-      return 'Concluído'
+      return 'finished'
     }
     if (interruptedDate) {
-      return 'Interrompido'
+      return 'interrupted'
     }
     if (!finishedDate && !interruptedDate) {
-      return 'Em Andamento'
+      return 'in_progress'
     }
-    return 'Status não definido'
+    return 'status_not_defined'
+  }
+
+  const StatusText = (status: string) => {
+    switch (status) {
+      case 'finished':
+        return 'Concluído'
+      case 'interrupted':
+        return 'Interrompido'
+      case 'in_progress':
+        return 'Em andamento'
+      default:
+        return 'Status não definido'
+    }
   }
 
   const statusColor = (status: string) =>
     (({
-      Concluído: 'green',
-      Interrompido: 'red',
-      'Em Andamento': 'yellow',
+      finished: 'green',
+      interrupted: 'red',
+      in_progress: 'yellow',
     })[status] || 'green') as 'green' | 'red' | 'yellow'
 
   return (
@@ -60,7 +73,9 @@ export function History() {
                       getStatus(cycle.finishedDate, cycle.interruptedDate),
                     )}
                   >
-                    {getStatus(cycle.finishedDate, cycle.interruptedDate)}
+                    {StatusText(
+                      getStatus(cycle.finishedDate, cycle.interruptedDate),
+                    )}
                   </Status>
                 </td>
               </tr>
