@@ -1,11 +1,15 @@
 import { useContext } from 'react'
 import { HistoryContainer, HistoryList, Status } from './styles'
 import { CycleContext } from '../../contexts/CyclesContext'
-import { formatDistanceToNow } from 'date-fns'
+import { compareDesc, formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 export function History() {
   const { cycles } = useContext(CycleContext)
+
+  const orderedCycles = [...cycles].sort((a, b) =>
+    compareDesc(a.startDate, b.startDate),
+  )
 
   const getStatus = (
     finishedDate: Date | undefined,
@@ -57,7 +61,7 @@ export function History() {
             </tr>
           </thead>
           <tbody>
-            {cycles.map((cycle) => (
+            {orderedCycles.map((cycle) => (
               <tr key={cycle.id}>
                 <td>{cycle.task}</td>
                 <td>{cycle.minutesAmount} minutos</td>

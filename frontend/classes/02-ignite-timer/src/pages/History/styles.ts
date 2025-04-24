@@ -78,6 +78,7 @@ export const HistoryList = styled.div`
     &:first-child {
       border-top-left-radius: 8px;
       padding-left: 1.5rem;
+      width: 50%;
     }
 
     &:last-child {
