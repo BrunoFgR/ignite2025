@@ -1,54 +1,38 @@
-# React + TypeScript + Vite
+# Ignite-Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
 
-Currently, two official plugins are available:
+O Ignite-Timer é uma aplicação projetada para gerenciamento de tempo baseada no método Pomodoro. Permite aos usuários cronometrar precisamente o tempo dedicado a suas tarefas, com capacidade de configurar intervalos entre 5 e 60 minutos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Na página inicial, o usuário encontra um cronômetro intuitivo onde pode nomear sua tarefa e definir seu tempo de duração. Já na seção de Histórico, é possível visualizar todas as tarefas anteriores através de uma tabela organizada com informações de Tarefa, Duração, Início e Status (que pode ser Concluído, Interrompido ou Em andamento).
 
-## Expanding the ESLint configuration
+<div align="center" style="display: flex; justify-content: center;">
+  <img src="assets/igniteTimer01.gif" alt="Tela inicial do Ignite Timer" style="margin-right: 10px;" />
+  <img src="assets/igniteTimer02.gif" alt="Tela de histórico do Ignite Timer" />
+</div>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias Utilizadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário com componentes reutilizáveis
+- **Styled-Components**: Biblioteca que permite escrever CSS em JavaScript, criando componentes estilizados
+- **React-Hook-Form**: Solução eficiente para gerenciamento de formulários com validações
+- **React-Router**: Biblioteca de roteamento que permite navegação entre diferentes componentes
+- **Zod**: Biblioteca de validação de esquemas TypeScript para garantir a integridade dos dados
+- **Immer**: Facilita o trabalho com estados imutáveis em aplicações React
+- **ESLint**: Ferramenta de análise de código para identificar e corrigir problemas
+- **TypeScript**: Superconjunto tipado de JavaScript que melhora a qualidade e manutenção do código
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Objetivos de Aprendizado
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Este projeto foi desenvolvido para o estudo aprofundado dos seguintes conceitos no React:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **SPAs (Single Page Applications)**: Desenvolvimento de aplicações de página única com transições fluidas
+- **Formulários Controlados e Não-Controlados**: Diferentes abordagens para manipulação de formulários no React
+- **UseEffect**: Utilização do hook para lidar com efeitos colaterais e ciclo de vida dos componentes
+- **UseReducer**: Implementação de lógica de estado mais complexa através deste hook
+- **React-Router**: Criação e gerenciamento de rotas para navegação eficiente na aplicação
+
+## Design
+
+O projeto foi desenvolvido seguindo um protótipo criado no Figma:
+[Link para o protótipo](https://www.figma.com/community/file/1127351821076435124)
