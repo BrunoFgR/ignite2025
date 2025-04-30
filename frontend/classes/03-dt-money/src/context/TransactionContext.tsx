@@ -11,6 +11,7 @@ export interface Transaction {
 
 interface TransactionContextData {
   transactions: Transaction[];
+  fetchTransactions: (query?: string) => Promise<void>;
 }
 
 interface TransactionContextProviderProps {
@@ -27,8 +28,13 @@ export function TransactionsContextProvider({
 }: TransactionContextProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  async function fetchTransactions() {
-    const response = await fetch("http://localhost:3333/transactions");
+  async function fetchTransactions(query?: string) {
+    const url = new URL("http://localhost:3333/transactions");
+    if (query) {
+      url.searchParams.append("q", query);
+    }
+
+    const response = await fetch(url.toString());
     const data = await response.json();
     setTransactions(data);
   }
@@ -40,6 +46,7 @@ export function TransactionsContextProvider({
   const value = useMemo(
     () => ({
       transactions,
+      fetchTransactions,
     }),
     [transactions],
   );
