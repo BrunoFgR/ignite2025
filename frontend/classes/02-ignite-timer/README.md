@@ -7,7 +7,7 @@ O Ignite-Timer é uma aplicação projetada para gerenciamento de tempo baseada 
 Na página inicial, o usuário encontra um cronômetro intuitivo onde pode nomear sua tarefa e definir seu tempo de duração. Já na seção de Histórico, é possível visualizar todas as tarefas anteriores através de uma tabela organizada com informações de Tarefa, Duração, Início e Status (que pode ser Concluído, Interrompido ou Em andamento).
 
 <div align="center" style="display: flex; justify-content: center;">
-  <img src="assets/igniteTimer01.gif" alt="Tela inicial do Ignite Timer" style="margin-right: 10px;" width="500"/>
+  <img src="assets/igniteTimer01.gif" alt="Tela inicial do Ignite Timer" width="500"/>
   <img src="assets/igniteTimer02.gif" alt="Tela de histórico do Ignite Timer" width="500"/>
 </div>
 
