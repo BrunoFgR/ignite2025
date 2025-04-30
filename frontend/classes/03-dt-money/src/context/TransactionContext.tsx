@@ -1,4 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from "react";
+import { api } from "../lib/axios";
 
 export interface Transaction {
   id: string;
@@ -9,9 +10,17 @@ export interface Transaction {
   createdAt: string;
 }
 
+interface CreateTransactionInput {
+  description: string;
+  amount: number;
+  category: string;
+  type: "income" | "outcome";
+}
+
 interface TransactionContextData {
   transactions: Transaction[];
   fetchTransactions: (query?: string) => Promise<void>;
+  createTransaction: (data: CreateTransactionInput) => Promise<void>;
 }
 
 interface TransactionContextProviderProps {
@@ -29,14 +38,28 @@ export function TransactionsContextProvider({
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   async function fetchTransactions(query?: string) {
-    const url = new URL("http://localhost:3333/transactions");
-    if (query) {
-      url.searchParams.append("q", query);
-    }
+    const response = await api.get<Transaction[]>("/transactions", {
+      params: {
+        _sort: "createdAt",
+        _order: "desc",
+        q: query,
+      },
+    });
+    setTransactions(response.data);
+  }
 
-    const response = await fetch(url.toString());
-    const data = await response.json();
-    setTransactions(data);
+  async function createTransaction(data: CreateTransactionInput) {
+    const { description, amount, category, type } = data;
+
+    const response = await api.post<Transaction>("/transactions", {
+      description,
+      amount,
+      category,
+      type,
+      createdAt: new Date().toISOString(),
+    });
+
+    setTransactions((prevTransactions) => [response.data, ...prevTransactions]);
   }
 
   useEffect(() => {
@@ -47,6 +70,7 @@ export function TransactionsContextProvider({
     () => ({
       transactions,
       fetchTransactions,
+      createTransaction,
     }),
     [transactions],
   );

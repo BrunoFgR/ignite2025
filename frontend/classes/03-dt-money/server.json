@@ -1,7 +1,7 @@
 {
   "transactions": [
     {
-      "id": "1",
+      "id": 1,
       "description": "Grocery shopping",
       "type": "outcome",
       "category": "Food",
@@ -9,12 +9,20 @@
       "createdAt": "2022-07-29T12:00:00.000Z"
     },
     {
-      "id": "2",
+      "id": 2,
       "description": "Site development",
       "type": "income",
       "category": "Software",
       "amount": 5000,
       "createdAt": "2022-06-29T12:00:00.000Z"
+    },
+    {
+      "description": "Buy fruits",
+      "amount": 100,
+      "category": "Food",
+      "type": "outcome",
+      "createdAt": "2025-04-30T04:31:43.648Z",
+      "id": 3
     }
   ]
 }

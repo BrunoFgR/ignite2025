@@ -11,10 +11,12 @@ import {
   TransactionType,
   TransactionTypeButton,
 } from "./styles";
+import { TransactionsContext } from "../../context/TransactionContext";
+import { useContext } from "react";
 
 const newTransactionSchema = z.object({
   description: z.string().min(1).max(100),
-  price: z.number().min(0),
+  amount: z.number().min(0),
   category: z.string().min(1).max(100),
   type: z.enum(["income", "outcome"]),
 });
@@ -22,7 +24,10 @@ const newTransactionSchema = z.object({
 type NewTransactionFormData = z.infer<typeof newTransactionSchema>;
 
 export function NewTransactionModal() {
+  const { createTransaction } = useContext(TransactionsContext);
+
   const {
+    reset,
     control,
     register,
     handleSubmit,
@@ -35,8 +40,8 @@ export function NewTransactionModal() {
   });
 
   async function handleCreateNewTransaction(data: NewTransactionFormData) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+    await createTransaction(data);
+    reset();
   }
 
   return (
@@ -61,7 +66,7 @@ export function NewTransactionModal() {
             type="number"
             placeholder="Valor"
             required
-            {...register("price", { valueAsNumber: true })}
+            {...register("amount", { valueAsNumber: true })}
           />
           <input
             type="text"
