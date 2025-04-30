@@ -6,7 +6,7 @@
       "type": "outcome",
       "category": "Food",
       "amount": 100,
-      "date": "2022-07-29T12:00:00.000Z"
+      "createdAt": "2022-07-29T12:00:00.000Z"
     },
     {
       "id": "2",
@@ -14,7 +14,7 @@
       "type": "income",
       "category": "Software",
       "amount": 5000,
-      "date": "2022-06-29T12:00:00.000Z"
+      "createdAt": "2022-06-29T12:00:00.000Z"
     }
   ]
 }
