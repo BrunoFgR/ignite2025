@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
 import {
@@ -7,28 +7,11 @@ import {
   TransactionTable,
 } from "./styles";
 import { SearchForm } from "./components/SearchForm";
-
-interface Transaction {
-  id: string;
-  description: string;
-  amount: number;
-  type: "income" | "outcome";
-  category: string;
-  createdAt: string;
-}
+import { TransactionsContext } from "../../context/TransactionContext";
+import { format } from "../../utils/currencyFormatter";
 
 export function Transactions() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  async function fetchTransactions() {
-    const response = await fetch("http://localhost:3333/transactions");
-    const data = await response.json();
-    setTransactions(data);
-  }
-
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
+  const { transactions } = useContext(TransactionsContext);
 
   return (
     <div>
@@ -44,10 +27,7 @@ export function Transactions() {
                 <td width="50%">{transaction.description}</td>
                 <td>
                   <PriceHighlight variant={transaction.type}>
-                    {transaction.amount.toLocaleString("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
-                    })}
+                    {format(transaction.amount)}
                   </PriceHighlight>
                 </td>
                 <td>{transaction.category}</td>
