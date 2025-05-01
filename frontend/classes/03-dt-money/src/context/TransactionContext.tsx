@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createContext } from "use-context-selector";
 import { api } from "../lib/axios";
 
@@ -38,7 +38,7 @@ export function TransactionsContextProvider({
 }: TransactionContextProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  async function fetchTransactions(query?: string) {
+  const fetchTransactions = useCallback(async (query?: string) => {
     const response = await api.get<Transaction[]>("/transactions", {
       params: {
         _sort: "createdAt",
@@ -47,24 +47,31 @@ export function TransactionsContextProvider({
       },
     });
     setTransactions(response.data);
-  }
+  }, []);
 
-  async function createTransaction(data: CreateTransactionInput) {
-    const { description, amount, category, type } = data;
+  const createTransaction = useCallback(
+    async (data: CreateTransactionInput) => {
+      const { description, amount, category, type } = data;
 
-    const response = await api.post<Transaction>("/transactions", {
-      description,
-      amount,
-      category,
-      type,
-      createdAt: new Date().toISOString(),
-    });
+      const response = await api.post<Transaction>("/transactions", {
+        description,
+        amount,
+        category,
+        type,
+        createdAt: new Date().toISOString(),
+      });
 
-    setTransactions((prevTransactions) => [response.data, ...prevTransactions]);
-  }
+      setTransactions((prevTransactions) => [
+        response.data,
+        ...prevTransactions,
+      ]);
+    },
+    [],
+  );
 
   useEffect(() => {
     fetchTransactions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = useMemo(
@@ -73,7 +80,7 @@ export function TransactionsContextProvider({
       fetchTransactions,
       createTransaction,
     }),
-    [transactions],
+    [createTransaction, fetchTransactions, transactions],
   );
 
   return (
