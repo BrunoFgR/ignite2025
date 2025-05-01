@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createContext } from "use-context-selector";
 import { api } from "../lib/axios";
 
@@ -71,17 +71,13 @@ export function TransactionsContextProvider({
 
   useEffect(() => {
     fetchTransactions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchTransactions]);
 
-  const value = useMemo(
-    () => ({
-      transactions,
-      fetchTransactions,
-      createTransaction,
-    }),
-    [createTransaction, fetchTransactions, transactions],
-  );
+  const value = {
+    transactions,
+    fetchTransactions,
+    createTransaction,
+  };
 
   return (
     <TransactionsContext.Provider value={value}>
