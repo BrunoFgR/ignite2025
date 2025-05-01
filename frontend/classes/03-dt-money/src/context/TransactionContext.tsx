@@ -1,4 +1,5 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { createContext } from "use-context-selector";
 import { api } from "../lib/axios";
 
 export interface Transaction {
