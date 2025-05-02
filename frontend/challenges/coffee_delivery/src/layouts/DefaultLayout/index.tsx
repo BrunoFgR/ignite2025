@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 export function DefaultLayout() {
   return (
-    <div className="max-w-full bg-base_background">
+    <div className="bg-base-background max-w-full">
       <Header />
       <Outlet />
     </div>
