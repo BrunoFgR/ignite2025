@@ -1,0 +1,47 @@
+import { useCallback, useEffect, useState } from "react";
+import { createContext } from "use-context-selector";
+import { baseURL } from "../../lib/axios";
+
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+  tags: string[];
+  amount: number;
+}
+
+interface ProductContextProviderProps {
+  children: React.ReactNode;
+}
+
+interface ProductContextData {
+  products: Product[];
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const ProductContext = createContext<ProductContextData>(
+  {} as ProductContextData,
+);
+
+export const ProductContextProvider = ({
+  children,
+}: ProductContextProviderProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const fetchProducts = useCallback(async () => {
+    const { data } = await baseURL.get<Product[]>("/coffees");
+    setProducts(data);
+  }, []);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
+  return (
+    <ProductContext.Provider value={{ products }}>
+      {children}
+    </ProductContext.Provider>
+  );
+};

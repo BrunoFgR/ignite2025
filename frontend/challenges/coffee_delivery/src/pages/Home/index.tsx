@@ -1,7 +1,14 @@
+import { useContextSelector } from "use-context-selector";
 import { Banner } from "../../components/Banner";
 import { Card } from "../../components/Card";
+import { ProductContext } from "../../context/ProductContext";
 
 export function Home() {
+  const products = useContextSelector(
+    ProductContext,
+    ({ products }) => products,
+  );
+
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-grow">
@@ -13,11 +20,10 @@ export function Home() {
               Nossos cafés
             </h2>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+              {products.map((product) => (
+                <Card key={product.id} {...product} />
+              ))}
             </div>
           </div>
         </section>

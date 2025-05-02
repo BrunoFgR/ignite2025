@@ -1,34 +1,40 @@
-import coffee from "../../assets/Coffee.png";
+import { ShoppingCart } from "phosphor-react";
+import { Product } from "../../context/ProductContext";
+import { getImage } from "../../utils/getImage";
+import { currencyFormatter } from "../../utils/formatter";
 
-export function Card() {
+export function Card({ title, description, price, image, tags }: Product) {
   return (
     <div className="flex w-64 transform flex-col items-center gap-3 justify-self-center rounded-special bg-base-card p-5 shadow-md transition hover:scale-105">
       <img
-        src={coffee}
+        src={getImage(image)}
         alt="Café Expresso Gelado"
         className="-mt-10 mb-2 h-28 w-28"
       />
 
       <div className="flex flex-wrap justify-center gap-1">
-        <span className="rounded-full bg-purple px-2 py-1 text-[10px] font-bold uppercase text-white">
-          Tradicional
-        </span>
-        <span className="rounded-full bg-purple px-2 py-1 text-[10px] font-bold uppercase text-white">
-          Gelado
-        </span>
+        {tags.map((tag) => (
+          <span
+            key={tag}
+            className="rounded-full bg-yellow-light px-2 py-1 text-[10px] font-bold uppercase text-yellow-dark"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
 
-      <h2 className="text-center text-xl font-bold text-base-text">
-        Expresso Gelado
+      <h2 className="text-center font-montserrat text-title-sm font-bold text-base-subtitle">
+        {title}
       </h2>
 
-      <p className="text-center text-sm leading-tight text-base-subtitle">
-        Bebida preparada com café expresso e cubos de gelo
-      </p>
+      <p className="text-center text-text-sm text-base-label">{description}</p>
 
       <div className="mt-5 flex w-full items-center justify-between">
-        <div className="text-coffee text-2xl font-extrabold">
-          <span className="text-sm font-normal">R$</span> 9,90
+        <div className="font-montserrat text-title-md font-extrabold text-base-text">
+          <span className="mr-1 text-text-sm font-normal text-base-text">
+            R$
+          </span>
+          {currencyFormatter(price)}
         </div>
 
         <div className="flex gap-2">
@@ -42,10 +48,8 @@ export function Card() {
             </button>
           </div>
 
-          <button className="rounded-md bg-purple p-2 text-white">
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </svg>
+          <button className="rounded-md bg-purple-dark p-2 text-white">
+            <ShoppingCart weight="fill" />
           </button>
         </div>
       </div>
