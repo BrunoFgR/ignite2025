@@ -40,6 +40,18 @@ export default {
         title_lg: ["2rem", { lineHeight: "130%" }],
         title_xl: ["3rem", { lineHeight: "130%" }],
       },
+      gap: {
+        15: "3.75rem",
+      },
+      width: {
+        57: "14.4375rem",
+        73: "18.375rem",
+        99: "29.75rem",
+        120: "36.75rem",
+      },
+      height: {
+        90: "22.5rem",
+      },
     },
   },
   plugins: [],

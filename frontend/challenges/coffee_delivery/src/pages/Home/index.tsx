@@ -1,35 +1,10 @@
+import { Banner } from "../../components/Banner";
+
 export function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-grow pt-20">
-        {/* Banner */}
-        <section className="bg-brown-50 py-16">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/2 mb-8 md:mb-0">
-                <h1 className="text-4xl font-bold text-brown-800 mb-4">
-                  Descubra o Melhor Café
-                </h1>
-                <p className="text-lg text-gray-700 mb-6">
-                  Nossa cafeteria oferece os melhores grãos selecionados de todo
-                  o mundo. Trazemos para você uma experiência única de sabor e
-                  aroma em cada xícara.
-                </p>
-                <button className="bg-brown-600 hover:bg-brown-700 text-white px-6 py-3 rounded-lg transition">
-                  Conheça Nossos Cafés
-                </button>
-              </div>
-              <div className="md:w-1/2">
-                <img
-                  src="/banner-coffee.jpg"
-                  alt="Café especial"
-                  className="rounded-lg shadow-xl"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
+      <main className="flex-grow">
+        <Banner />
         {/* Product Cards */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
