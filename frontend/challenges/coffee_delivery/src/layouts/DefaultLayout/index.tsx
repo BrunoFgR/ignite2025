@@ -3,9 +3,11 @@ import { Outlet } from "react-router";
 
 export function DefaultLayout() {
   return (
-    <div className="bg-base-background max-w-full">
+    <div className="max-w-full bg-base-background">
       <Header />
-      <Outlet />
+      <div className="mt-[104px]">
+        <Outlet />
+      </div>
     </div>
   );
 }
