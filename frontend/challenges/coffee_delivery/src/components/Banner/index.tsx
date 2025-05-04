@@ -2,59 +2,67 @@ import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import banner_coffee from "../../assets/banner-coffee.png";
 
 export function Banner() {
+  const features = [
+    {
+      id: 1,
+      text: "Compra simples e segura",
+      bgColor: "bg-brand-yellow-dark",
+      iconSrc: <ShoppingCart weight="fill" className="text-white" />,
+    },
+    {
+      id: 3,
+      text: "Embalagem mantém o café intacto",
+      bgColor: "bg-base-text",
+      iconSrc: <Coffee weight="fill" className="text-white" />,
+    },
+    {
+      id: 2,
+      text: "Entrega rápida e rastreada",
+      bgColor: "bg-brand-yellow",
+      iconSrc: <Package weight="fill" className="text-white" />,
+    },
+    {
+      id: 4,
+      text: "O café chega fresquinho até você",
+      bgColor: "bg-brand-purple",
+      iconSrc: <Timer weight="fill" className="text-white" />,
+    },
+  ];
+
   return (
-    <section className="flex flex-col px-4 py-8 sm:px-6 md:flex-row md:px-10 md:py-16 lg:px-20 lg:py-24 xl:px-40">
-      <div className="flex w-full flex-1 flex-col-reverse justify-between gap-8 md:flex-row md:gap-4">
-        <div className="flex w-full flex-col gap-6 md:w-7/12 md:gap-10 lg:gap-15">
-          <div className="flex flex-col gap-4">
-            <h1 className="font-montserrat text-2xl font-extrabold text-base-title sm:text-3xl lg:text-title-xl">
-              Encontre o café perfeito para qualquer hora do dia
-            </h1>
-            <p className="text-base text-base-subtitle sm:text-lg lg:text-title-sm">
-              Com o Coffee Delivery você recebe seu café onde estiver, a
-              qualquer hora
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 gap-y-3 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-5 md:gap-x-8 lg:gap-x-10 xl:grid-cols-[1fr_2fr]">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 flex-shrink-0 rounded-2xl bg-yellow-dark p-2">
-                <ShoppingCart className="text-white" size={16} weight="fill" />
+    <section className="relative min-h-[400px] w-full bg-cover py-6 md:h-[544px] md:py-0">
+      <div className="container flex h-full flex-col items-center justify-between px-4 md:flex-row md:px-8 lg:px-8">
+        <div className="flex w-full flex-col gap-4 text-center md:max-w-[700px] md:text-left">
+          <h1 className="font-title-title-XL text-3xl font-extrabold text-base-title sm:text-4xl md:text-5xl">
+            Encontre o café perfeito para qualquer hora do dia
+          </h1>
+
+          <p className="font-text-regular-l text-base text-base-subtitle sm:text-lg md:text-xl">
+            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
+            hora
+          </p>
+
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-4 md:gap-5 lg:mt-8">
+            {features.map((feature) => (
+              <div key={feature.id} className="flex items-center gap-3">
+                <div
+                  className={`flex items-center justify-center rounded-full p-2 ${feature.bgColor}`}
+                >
+                  {feature.iconSrc}
+                </div>
+                <span className="font-text-regular-m text-[13px] text-base-text sm:text-base">
+                  {feature.text}
+                </span>
               </div>
-              <p className="text-sm text-base-text sm:text-base">
-                Compra simples e segura
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 flex-shrink-0 rounded-2xl bg-base-text p-2">
-                <Package className="text-white" size={16} weight="fill" />
-              </div>
-              <p className="text-sm text-base-text sm:text-base">
-                Embalagem mantém o café intacto
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 flex-shrink-0 rounded-2xl bg-yellow p-2">
-                <Timer className="text-white" size={16} weight="fill" />
-              </div>
-              <p className="text-sm text-base-text sm:text-base">
-                Entrega rápida e rastreada
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 flex-shrink-0 rounded-2xl bg-purple p-2">
-                <Coffee className="text-white" size={16} weight="fill" />
-              </div>
-              <p className="text-sm text-base-text sm:text-base">
-                O café chega fresquinho até você
-              </p>
-            </div>
+            ))}
           </div>
         </div>
-        <div className="flex w-full justify-center md:w-auto md:justify-end">
+
+        <div className="mt-8 hidden w-full justify-center md:mt-0 md:block md:w-auto lg:flex">
           <img
+            className="h-auto max-h-[360px] w-auto max-w-[80%] object-cover sm:max-w-[350px] md:w-[476px] md:max-w-full"
+            alt="Imagem de café"
             src={banner_coffee}
-            alt="Café especial"
-            className="h-auto max-w-full"
           />
         </div>
       </div>

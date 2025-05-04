@@ -1,6 +1,6 @@
 import { useContextSelector } from "use-context-selector";
 import { Banner } from "../../components/Banner";
-import { Card } from "../../components/Card";
+import { CoffeeCard } from "./sections/CoffeeCard";
 import { ProductContext } from "../../context/ProductContext";
 
 export function Home() {
@@ -16,13 +16,13 @@ export function Home() {
         {/* Product Cards */}
         <section className="px-4 py-8 sm:px-6 md:px-8 lg:px-16 xl:px-40">
           <div className="flex flex-col gap-8 md:gap-10 lg:gap-14">
-            <h2 className="font-montserrat text-xl font-extrabold text-base-title md:text-2xl lg:text-title-lg">
+            <h2 className="font-title-title-l text-xl font-extrabold text-base-subtitle md:text-2xl lg:text-title-lg">
               Nossos cafés
             </h2>
 
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
               {products.map((product) => (
-                <Card key={product.id} {...product} />
+                <CoffeeCard key={product.id} {...product} />
               ))}
             </div>
           </div>

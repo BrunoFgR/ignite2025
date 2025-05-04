@@ -1,3 +1,172 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --base-background: rgba(250, 250, 250, 1);
+  --base-button: rgba(230, 229, 229, 1);
+  --base-card: rgba(243, 242, 242, 1);
+  --base-label: rgba(141, 134, 134, 1);
+  --base-subtitle: rgba(64, 57, 55, 1);
+  --base-text: rgba(87, 79, 77, 1);
+  --base-title: rgba(39, 34, 33, 1);
+  --brand-yellow: rgba(219, 172, 44, 1);
+  --brand-yellow-dark: rgba(196, 127, 23, 1);
+  --brand-purple: rgba(128, 71, 248, 1);
+  --brand-purple-dark: rgba(75, 41, 149, 1);
+  --brand-purple-light: rgba(235, 229, 249, 1);
+  --brand-yellow-light: rgba(241, 233, 201, 1);
+  --components-tag-font-family: "Roboto", Helvetica;
+  --components-tag-font-size: 10px;
+  --components-tag-font-style: normal;
+  --components-tag-font-weight: 700;
+  --components-tag-letter-spacing: 0px;
+  --components-tag-line-height: 130%;
+  --text-regular-l-font-family: "Roboto", Helvetica;
+  --text-regular-l-font-size: 20px;
+  --text-regular-l-font-style: normal;
+  --text-regular-l-font-weight: 400;
+  --text-regular-l-letter-spacing: 0px;
+  --text-regular-l-line-height: 130%;
+  --text-regular-m-font-family: "Roboto", Helvetica;
+  --text-regular-m-font-size: 16px;
+  --text-regular-m-font-style: normal;
+  --text-regular-m-font-weight: 400;
+  --text-regular-m-letter-spacing: 0px;
+  --text-regular-m-line-height: 130%;
+  --text-regular-s-font-family: "Roboto", Helvetica;
+  --text-regular-s-font-size: 14px;
+  --text-regular-s-font-style: normal;
+  --text-regular-s-font-weight: 400;
+  --text-regular-s-letter-spacing: 0px;
+  --text-regular-s-line-height: 130%;
+  --title-title-l-font-family: "Baloo 2", Helvetica;
+  --title-title-l-font-size: 32px;
+  --title-title-l-font-style: normal;
+  --title-title-l-font-weight: 800;
+  --title-title-l-letter-spacing: 0px;
+  --title-title-l-line-height: 130%;
+  --title-title-s-font-family: "Baloo 2", Helvetica;
+  --title-title-s-font-size: 20px;
+  --title-title-s-font-style: normal;
+  --title-title-s-font-weight: 700;
+  --title-title-s-letter-spacing: 0px;
+  --title-title-s-line-height: 130%;
+  --title-title-XL-font-family: "Baloo 2", Helvetica;
+  --title-title-XL-font-size: 48px;
+  --title-title-XL-font-style: normal;
+  --title-title-XL-font-weight: 800;
+  --title-title-XL-letter-spacing: 0px;
+  --title-title-XL-line-height: 130%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;
+
+    --chart-3: 197 37% 24%;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 0 0% 83.1%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 220 70% 50%;
+
+    --chart-2: 160 60% 45%;
+
+    --chart-3: 30 80% 55%;
+
+    --chart-4: 280 65% 60%;
+
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    @apply font-text-regular-s;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}

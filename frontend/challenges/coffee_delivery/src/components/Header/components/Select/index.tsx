@@ -5,7 +5,7 @@ export function Select() {
   return (
     <SelectRadix.Root>
       <SelectRadix.Trigger
-        className="flex items-center justify-center gap-1 rounded-md border border-purple-dark bg-purple-light px-1 py-1 text-xs text-purple md:px-2 md:py-2 md:text-sm"
+        className="bg-brand-purple-light text-brand-purple flex items-center justify-center gap-1 rounded-md px-1 py-1 text-sm md:px-2 md:py-2"
         aria-label="city"
       >
         <SelectRadix.Icon>
@@ -13,9 +13,9 @@ export function Select() {
         </SelectRadix.Icon>
         <SelectRadix.Value
           placeholder="Porto Alegre, RS"
-          className="hidden sm:inline"
+          className="hidden whitespace-nowrap sm:inline"
         />
-        <SelectRadix.Value placeholder="POA" className="inline sm:hidden" />
+        <SelectRadix.Value placeholder="" className="inline sm:hidden" />
       </SelectRadix.Trigger>
       <SelectRadix.Portal>
         <SelectRadix.Content
@@ -35,7 +35,7 @@ export function Select() {
             </SelectRadix.Item>
             <SelectRadix.Item
               value="option2"
-              className="px-4 py-2 text-xs hover:bg-purple-light hover:text-purple md:text-sm"
+              className="hover:bg-brand-purple-light hover:text-brand-purple px-4 py-2 text-xs md:text-sm"
             >
               <SelectRadix.ItemText>Rio de Janeiro, RJ</SelectRadix.ItemText>
               <SelectRadix.ItemIndicator />
