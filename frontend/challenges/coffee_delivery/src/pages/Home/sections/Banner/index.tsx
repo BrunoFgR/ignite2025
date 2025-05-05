@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import banner_coffee from "../../assets/banner-coffee.png";
+import banner_coffee from "../../../../assets/banner-coffee.png";
 
 export function Banner() {
   const features = [

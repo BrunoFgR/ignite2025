@@ -1,7 +1,8 @@
 import { useContextSelector } from "use-context-selector";
-import { Banner } from "../../components/Banner";
-import { CoffeeCard } from "./sections/CoffeeCard";
+import { Banner } from "./sections/Banner";
+import { CoffeeCard } from "./sections/ListCoffee/CoffeeCard";
 import { ProductContext } from "../../context/ProductContext";
+import { ListCoffee } from "./sections/ListCoffee";
 
 export function Home() {
   const products = useContextSelector(
@@ -13,20 +14,7 @@ export function Home() {
     <div className="flex min-h-screen flex-col">
       <main className="flex-grow">
         <Banner />
-        {/* Product Cards */}
-        <section className="px-4 py-8 sm:px-6 md:px-8 lg:px-16 xl:px-40">
-          <div className="flex flex-col gap-8 md:gap-10 lg:gap-14">
-            <h2 className="font-title-title-l text-xl font-extrabold text-base-subtitle md:text-2xl lg:text-title-lg">
-              Nossos cafés
-            </h2>
-
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
-              {products.map((product) => (
-                <CoffeeCard key={product.id} {...product} />
-              ))}
-            </div>
-          </div>
-        </section>
+        <ListCoffee products={products} />
       </main>
     </div>
   );

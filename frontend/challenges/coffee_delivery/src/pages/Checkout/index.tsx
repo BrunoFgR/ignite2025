@@ -1,4 +1,16 @@
-import { Input } from "../../components/Input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  Bank,
+  CreditCard,
+  Money,
+  CurrencyDollar,
+  MapPinLine,
+  Trash,
+} from "phosphor-react";
+import americano from "@/assets/americano.png";
+import { Divider } from "@/components/ui/divider";
 
 export function Checkout() {
   // Form field data for mapping
@@ -17,145 +29,211 @@ export function Checkout() {
     {
       id: "credit",
       label: "CARTÃO DE CRÉDITO",
-      icon: "https://c.animaapp.com/ma90dl2m0T2ZgM/img/icon-12.svg",
+      icon: <Money size={16} />,
     },
     {
       id: "debit",
       label: "CARTÃO DE DÉBITO",
-      icon: "https://c.animaapp.com/ma90dl2m0T2ZgM/img/icon.svg",
+      icon: <Bank size={16} />,
     },
     {
       id: "cash",
       label: "DINHEIRO",
-      icon: "https://c.animaapp.com/ma90dl2m0T2ZgM/img/icon-7.svg",
+      icon: <CreditCard size={16} />,
     },
   ];
 
   return (
-    <div className="flex w-full max-w-[640px] flex-col items-start gap-3">
-      <Card className="bg-basecard w-full rounded-md">
-        <CardContent className="flex flex-col gap-8 p-10">
-          <div className="flex w-full items-start gap-2">
-            <img
-              className="h-[22px] w-[22px]"
-              alt="Icon"
-              src="https://c.animaapp.com/ma90dl2m0T2ZgM/img/icon-10.svg"
-            />
+    <div className="flex flex-col self-stretch px-4 lg:px-40">
+      <div className="flex flex-col justify-start gap-8 lg:flex-row">
+        <div className="flex w-full flex-col items-start gap-3">
+          <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle">
+            Complete seu pedido
+          </h2>
+          <Card className="w-full rounded-md bg-base-card">
+            <CardContent className="flex flex-col gap-8 p-4 md:p-10">
+              <div className="flex w-full items-start gap-2">
+                <MapPinLine className="h-[22px] w-[22px] text-brand-yellow-dark" />
 
-            <div className="flex flex-1 flex-col items-start gap-0.5">
-              <div className="font-text-regular-m text-basesubtitle mt-[-1.00px] w-full text-[length:var(--text-regular-m-font-size)] leading-[var(--text-regular-m-line-height)] tracking-[var(--text-regular-m-letter-spacing)]">
-                Endereço de Entrega
-              </div>
+                <div className="flex flex-1 flex-col items-start gap-0.5">
+                  <div className="mt-[-1.00px] w-full font-text-regular-m text-base leading-[130%] text-base-subtitle">
+                    Endereço de Entrega
+                  </div>
 
-              <div className="font-text-regular-s text-basetext h-[21px] w-full whitespace-nowrap text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]">
-                Informe o endereço onde deseja receber seu pedido
-              </div>
-            </div>
-          </div>
-
-          <div className="flex w-full flex-col items-start gap-4">
-            {/* First row - CEP */}
-            <div className="bg-baseinput relative flex w-[200px] items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-              <Input
-                className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                placeholder="CEP"
-              />
-            </div>
-
-            {/* Second row - Street */}
-            <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-              <Input
-                className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                placeholder="Rua"
-              />
-            </div>
-
-            {/* Third row - Number and Complement */}
-            <div className="flex w-full items-center gap-3">
-              <div className="bg-baseinput relative flex w-[200px] items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-                <Input
-                  className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                  placeholder="Número"
-                />
-              </div>
-
-              <div className="bg-baseinput relative flex flex-1 items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-                <Input
-                  className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                  placeholder="Complemento"
-                />
-                <div className="text-baselabel w-fit whitespace-nowrap pr-3 font-['Roboto',Helvetica] text-xs font-normal italic leading-[15.6px] tracking-[0]">
-                  Opcional
+                  <div className="w-full font-text-regular-s text-sm leading-[130%] text-base-text">
+                    Informe o endereço onde deseja receber seu pedido
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Fourth row - Neighborhood, City and State */}
-            <div className="flex w-full items-center gap-3">
-              <div className="bg-baseinput relative flex w-[200px] items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-                <Input
-                  className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                  placeholder="Bairro"
-                />
-              </div>
-
-              <div className="bg-baseinput relative flex flex-1 items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-                <Input
-                  className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                  placeholder="Cidade"
-                />
-              </div>
-
-              <div className="bg-baseinput relative flex w-[60px] items-center gap-1 rounded border border-solid border-[#e6e5e5]">
-                <Input
-                  className="font-text-regular-s text-baselabel h-auto border-none bg-transparent p-3 text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
-                  placeholder="UF"
-                />
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="bg-basecard w-full rounded-md">
-        <CardContent className="flex flex-col gap-8 p-10">
-          <div className="flex w-full items-start gap-2">
-            <img
-              className="h-[22px] w-[22px]"
-              alt="Icon"
-              src="https://c.animaapp.com/ma90dl2m0T2ZgM/img/icon-1.svg"
-            />
-
-            <div className="flex flex-1 flex-col items-start gap-0.5">
-              <div className="font-text-regular-m text-basesubtitle mt-[-1.00px] w-full text-[length:var(--text-regular-m-font-size)] leading-[var(--text-regular-m-line-height)] tracking-[var(--text-regular-m-letter-spacing)]">
-                Pagamento
-              </div>
-
-              <div className="font-text-regular-s text-basetext h-[21px] w-full whitespace-nowrap text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]">
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </div>
-            </div>
-          </div>
-
-          <div className="flex w-full items-center justify-center gap-3">
-            {paymentMethods.map((method) => (
-              <button
-                key={method.id}
-                className="bg-basebutton hover:bg-basehover flex flex-1 items-center gap-3 rounded-md p-4 transition-colors"
-              >
-                <img
-                  className="h-4 w-4"
-                  alt={`${method.label} icon`}
-                  src={method.icon}
-                />
-                <div className="font-components-button-s text-basetext mt-[-0.50px] whitespace-nowrap text-[length:var(--components-button-s-font-size)] font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)]">
-                  {method.label}
+              <div className="flex w-full flex-col items-start gap-4">
+                {/* First row - CEP */}
+                <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[200px]">
+                  <Input
+                    className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                    placeholder="CEP"
+                  />
                 </div>
-              </button>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+
+                {/* Second row - Street */}
+                <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5]">
+                  <Input
+                    type="text"
+                    className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                    placeholder="Rua"
+                  />
+                </div>
+
+                {/* Third row - Number and Complement */}
+                <div className="flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[200px]">
+                    <Input
+                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      placeholder="Número"
+                    />
+                  </div>
+
+                  <div className="bg-baseinput relative flex w-full flex-1 items-center gap-1 rounded border border-solid border-[#e6e5e5]">
+                    <Input
+                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      placeholder="Complemento"
+                    />
+                    <div className="text-baselabel w-fit whitespace-nowrap pr-3 font-['Roboto',Helvetica] text-xs font-normal italic leading-[15.6px] tracking-[0]">
+                      Opcional
+                    </div>
+                  </div>
+                </div>
+
+                {/* Fourth row - Neighborhood, City and State */}
+                <div className="flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[200px]">
+                    <Input
+                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      placeholder="Bairro"
+                    />
+                  </div>
+
+                  <div className="bg-baseinput relative flex w-full flex-1 items-center gap-1 rounded border border-solid border-[#e6e5e5]">
+                    <Input
+                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      placeholder="Cidade"
+                    />
+                  </div>
+
+                  <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[60px]">
+                    <Input
+                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      placeholder="UF"
+                    />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="w-full rounded-md bg-base-card">
+            <CardContent className="flex flex-col gap-8 p-4 md:p-10">
+              <div className="flex w-full items-start gap-2">
+                <CurrencyDollar size={22} className="text-brand-purple" />
+
+                <div className="flex flex-1 flex-col items-start gap-0.5">
+                  <div className="mt-[-1.00px] w-full font-text-regular-m text-base leading-[130%] text-base-subtitle">
+                    Pagamento
+                  </div>
+
+                  <div className="w-full font-text-regular-s text-sm leading-[130%] text-base-text">
+                    O pagamento é feito na entrega. Escolha a forma que deseja
+                    pagar
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
+                {paymentMethods.map((method) => (
+                  <Button
+                    key={method.id}
+                    className="flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-brand-purple transition-colors sm:flex-1"
+                  >
+                    {method.icon}
+                    <div className="font-components-button-s text-basetext mt-[-0.50px] text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] sm:text-[length:var(--components-button-s-font-size)]">
+                      {method.label}
+                    </div>
+                  </Button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="mt-4 flex w-full flex-col gap-3 lg:mt-0 lg:max-w-[440px]">
+          <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle">
+            Cafés selecionados
+          </h2>
+          <Card className="rounded-md bg-base-card p-4 md:p-10 lg:rounded-[6px_44px]">
+            <CardContent className="flex flex-col gap-6 self-stretch p-0">
+              <div className="flex flex-wrap justify-between px-1 py-2 sm:flex-nowrap">
+                <div className="flex items-center gap-5">
+                  <img src={americano} alt="Coffee" className="h-16 w-16" />
+                  <div className="flex flex-col items-start justify-center gap-2">
+                    <span className="font-text-regular-m text-base leading-[130%] text-base-subtitle">
+                      Americano
+                    </span>
+                    <div className="flex flex-1 gap-2">
+                      <div className="flex items-center rounded-md bg-base-button px-2 py-1">
+                        <button className="flex h-5 w-5 items-center justify-center text-brand-purple">
+                          -
+                        </button>
+                        <span className="w-5 text-center text-base-text">
+                          1
+                        </span>
+                        <button className="flex h-5 w-5 items-center justify-center text-brand-purple">
+                          +
+                        </button>
+                      </div>
+                      <Button className="rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text">
+                        <Trash className="h-4 w-4 text-brand-purple" />
+                        remover
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-2 w-full text-right text-base font-bold leading-[130%] text-base-text sm:mt-0 sm:w-auto">
+                  <strong>R$ 9,90</strong>
+                </div>
+              </div>
+              <Divider />
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-right text-sm leading-[130%] text-base-text">
+                    Total de itens
+                  </span>
+                  <span className="text-right text-base leading-[130%] text-base-text">
+                    R$ 9,90
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-right text-sm leading-[130%] text-base-text">
+                    Entrega
+                  </span>
+                  <span className="text-right text-base leading-[130%] text-base-text">
+                    R$ 3,00
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-right text-xl font-bold leading-[130%] text-base-subtitle">
+                    Total
+                  </span>
+                  <span className="text-right text-xl font-bold leading-[130%] text-base-subtitle">
+                    R$ 12,90
+                  </span>
+                </div>
+              </div>
+              <Button className="rounded-md bg-brand-yellow px-2 py-3 font-bold text-white">
+                CONFIRMAR PEDIDO
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }

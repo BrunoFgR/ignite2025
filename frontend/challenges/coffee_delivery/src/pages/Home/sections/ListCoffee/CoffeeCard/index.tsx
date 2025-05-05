@@ -1,8 +1,8 @@
 import { ShoppingCart } from "phosphor-react";
-import { Product } from "../../../../context/ProductContext";
-import { getImage } from "../../../../utils/getImage";
-import { currencyFormatter } from "../../../../utils/formatter";
-import { Card, CardContent } from "../../../../components/ui/card";
+import { Product } from "../../../../../context/ProductContext";
+import { Card, CardContent } from "../../../../../components/ui/card";
+import { getImage } from "../../../../../utils/getImage";
+import { currencyFormatter } from "../../../../../utils/formatter";
 
 export function CoffeeCard({
   title,

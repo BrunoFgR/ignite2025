@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.svg";
+import logo from "../../../../assets/logo.svg";
 import { ShoppingCart } from "phosphor-react";
 import { Badge } from "./components/Badge";
 import { Select } from "./components/Select";
