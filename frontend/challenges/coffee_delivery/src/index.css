@@ -9,12 +9,14 @@
 
 :root {
   --base-background: rgba(250, 250, 250, 1);
+  --base-input: rgba(237, 237, 237, 1);
   --base-button: rgba(230, 229, 229, 1);
   --base-card: rgba(243, 242, 242, 1);
   --base-label: rgba(141, 134, 134, 1);
   --base-subtitle: rgba(64, 57, 55, 1);
   --base-text: rgba(87, 79, 77, 1);
   --base-title: rgba(39, 34, 33, 1);
+  --base-hover: rgba(215, 213, 213, 1);
   --brand-yellow: rgba(219, 172, 44, 1);
   --brand-yellow-dark: rgba(196, 127, 23, 1);
   --brand-purple: rgba(128, 71, 248, 1);

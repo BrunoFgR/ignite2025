@@ -29,23 +29,23 @@ export function Checkout() {
     {
       id: "credit",
       label: "CARTÃO DE CRÉDITO",
-      icon: <Money size={16} />,
+      icon: <Money size={16} className="text-brand-purple" />,
     },
     {
       id: "debit",
       label: "CARTÃO DE DÉBITO",
-      icon: <Bank size={16} />,
+      icon: <Bank size={16} className="text-brand-purple" />,
     },
     {
       id: "cash",
       label: "DINHEIRO",
-      icon: <CreditCard size={16} />,
+      icon: <CreditCard size={16} className="text-brand-purple" />,
     },
   ];
 
   return (
-    <div className="flex flex-col self-stretch px-4 lg:px-40">
-      <div className="flex flex-col justify-start gap-8 lg:flex-row">
+    <div className="flex max-w-full flex-col px-4 lg:px-8 xl:px-40">
+      <div className="mb-12 flex flex-col justify-start gap-8 lg:mb-0 lg:flex-row">
         <div className="flex w-full flex-col items-start gap-3">
           <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle">
             Complete seu pedido
@@ -68,37 +68,37 @@ export function Checkout() {
 
               <div className="flex w-full flex-col items-start gap-4">
                 {/* First row - CEP */}
-                <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[200px]">
+                <div className="relative flex w-full items-center gap-1 rounded border border-solid border-base-button bg-base-input sm:w-[200px]">
                   <Input
-                    className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                    className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                     placeholder="CEP"
                   />
                 </div>
 
                 {/* Second row - Street */}
-                <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5]">
+                <div className="relative flex w-full items-center gap-1 rounded border border-solid border-base-button bg-base-input">
                   <Input
                     type="text"
-                    className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                    className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                     placeholder="Rua"
                   />
                 </div>
 
                 {/* Third row - Number and Complement */}
                 <div className="flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center">
-                  <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[200px]">
+                  <div className="relative flex w-full items-center gap-1 rounded border border-solid border-base-button bg-base-input sm:w-[200px]">
                     <Input
-                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                       placeholder="Número"
                     />
                   </div>
 
-                  <div className="bg-baseinput relative flex w-full flex-1 items-center gap-1 rounded border border-solid border-[#e6e5e5]">
+                  <div className="relative flex w-full flex-1 items-center gap-1 rounded border border-solid border-base-button bg-base-input">
                     <Input
-                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      className="h-auto rounded-ee border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                       placeholder="Complemento"
                     />
-                    <div className="text-baselabel w-fit whitespace-nowrap pr-3 font-['Roboto',Helvetica] text-xs font-normal italic leading-[15.6px] tracking-[0]">
+                    <div className="w-fit whitespace-nowrap pr-3 font-['Roboto',Helvetica] text-xs font-normal italic leading-[15.6px] tracking-[0] text-base-label">
                       Opcional
                     </div>
                   </div>
@@ -106,23 +106,23 @@ export function Checkout() {
 
                 {/* Fourth row - Neighborhood, City and State */}
                 <div className="flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center">
-                  <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[200px]">
+                  <div className="relative flex w-full items-center gap-1 rounded border border-solid border-base-button bg-base-input sm:w-[200px]">
                     <Input
-                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                       placeholder="Bairro"
                     />
                   </div>
 
-                  <div className="bg-baseinput relative flex w-full flex-1 items-center gap-1 rounded border border-solid border-[#e6e5e5]">
+                  <div className="relative flex w-full flex-1 items-center gap-1 rounded border border-solid border-base-button bg-base-input">
                     <Input
-                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                       placeholder="Cidade"
                     />
                   </div>
 
-                  <div className="bg-baseinput relative flex w-full items-center gap-1 rounded border border-solid border-[#e6e5e5] sm:w-[60px]">
+                  <div className="relative flex w-full items-center gap-1 rounded border border-solid border-base-button bg-base-input sm:w-[60px]">
                     <Input
-                      className="text-baselabel h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)]"
+                      className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"
                       placeholder="UF"
                     />
                   </div>
@@ -152,10 +152,10 @@ export function Checkout() {
                 {paymentMethods.map((method) => (
                   <Button
                     key={method.id}
-                    className="flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-brand-purple transition-colors sm:flex-1"
+                    className="hover:bg-base-hover flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-base-title transition-colors hover:text-base-subtitle sm:flex-1"
                   >
                     {method.icon}
-                    <div className="font-components-button-s text-basetext mt-[-0.50px] text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] sm:text-[length:var(--components-button-s-font-size)]">
+                    <div className="mt-[-0.50px] font-text-regular-s text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] text-base-text">
                       {method.label}
                     </div>
                   </Button>
@@ -171,13 +171,13 @@ export function Checkout() {
           <Card className="rounded-md bg-base-card p-4 md:p-10 lg:rounded-[6px_44px]">
             <CardContent className="flex flex-col gap-6 self-stretch p-0">
               <div className="flex flex-wrap justify-between px-1 py-2 sm:flex-nowrap">
-                <div className="flex items-center gap-5">
+                <div className="flex w-full items-center justify-between sm:w-auto sm:gap-5">
                   <img src={americano} alt="Coffee" className="h-16 w-16" />
                   <div className="flex flex-col items-start justify-center gap-2">
                     <span className="font-text-regular-m text-base leading-[130%] text-base-subtitle">
                       Americano
                     </span>
-                    <div className="flex flex-1 gap-2">
+                    <div className="flex flex-1 justify-center gap-2 self-stretch">
                       <div className="flex items-center rounded-md bg-base-button px-2 py-1">
                         <button className="flex h-5 w-5 items-center justify-center text-brand-purple">
                           -
@@ -189,9 +189,9 @@ export function Checkout() {
                           +
                         </button>
                       </div>
-                      <Button className="rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text">
+                      <Button className="hover:bg-base-hover rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text hover:text-base-subtitle">
                         <Trash className="h-4 w-4 text-brand-purple" />
-                        remover
+                        <span className="hidden sm:inline">remover</span>
                       </Button>
                     </div>
                   </div>
@@ -227,7 +227,7 @@ export function Checkout() {
                   </span>
                 </div>
               </div>
-              <Button className="rounded-md bg-brand-yellow px-2 py-3 font-bold text-white">
+              <Button className="rounded-md bg-brand-yellow px-2 py-3 font-bold text-base-text text-white hover:bg-brand-yellow-dark">
                 CONFIRMAR PEDIDO
               </Button>
             </CardContent>

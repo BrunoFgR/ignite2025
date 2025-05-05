@@ -14,6 +14,8 @@ module.exports = {
         "base-subtitle": "var(--base-subtitle)",
         "base-text": "var(--base-text)",
         "base-title": "var(--base-title)",
+        "base-input": "var(--base-input)",
+        "base-hover": "var(--base-hover)",
         "brand-yellow": "var(--brand-yellow)",
         "brand-yellow-dark": "var(--brand-yellow-dark)",
         "brand-purple": "var(--brand-purple)",
