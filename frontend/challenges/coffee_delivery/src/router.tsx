@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { Checkout, Home } from "./pages";
+import { Checkout, Home, Success } from "./pages";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 
 export function Router() {
@@ -8,6 +8,7 @@ export function Router() {
       <Route path="/" element={<DefaultLayout />}>
         <Route index element={<Home />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="success" element={<Success />} />
       </Route>
     </Routes>
   );
