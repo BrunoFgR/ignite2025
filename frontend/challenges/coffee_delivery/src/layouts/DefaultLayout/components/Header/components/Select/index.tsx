@@ -1,48 +1,72 @@
-import * as SelectRadix from "@radix-ui/react-select";
+import { useState } from "react";
+import {
+  Root,
+  SelectTrigger,
+  SelectContent,
+  SelectViewport,
+  SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
+  SelectIcon,
+  SelectValue,
+  SelectScrollUpButton,
+} from "@radix-ui/react-select";
 import { MapPin } from "phosphor-react";
 
 export function Select() {
+  const [selectedCity, setSelectedCity] = useState("Porto Alegre, RS");
+
+  const cities = [
+    { value: "option1", label: "São Paulo, SP" },
+    { value: "option2", label: "Rio de Janeiro, RJ" },
+    { value: "option3", label: "Porto Alegre, RS" },
+  ];
+
+  const handleValueChange = (value: string) => {
+    const selectedOption = cities.find((city) => city.value === value);
+    if (selectedOption) {
+      setSelectedCity(selectedOption.label);
+    }
+  };
+
   return (
-    <SelectRadix.Root>
-      <SelectRadix.Trigger
+    <Root
+      value={cities.find((city) => city.label === selectedCity)?.value}
+      onValueChange={handleValueChange}
+    >
+      <SelectTrigger
         className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-1 py-1 text-sm text-brand-purple md:px-2 md:py-2"
         aria-label="city"
       >
-        <SelectRadix.Icon>
+        <SelectIcon>
           <MapPin weight="fill" size={16} className="md:size-[22px]" />
-        </SelectRadix.Icon>
-        <SelectRadix.Value
-          placeholder="Porto Alegre, RS"
+        </SelectIcon>
+        <SelectValue
+          placeholder={selectedCity}
           className="hidden whitespace-nowrap sm:inline"
         />
-        <SelectRadix.Value placeholder="" className="inline sm:hidden" />
-      </SelectRadix.Trigger>
-      <SelectRadix.Portal>
-        <SelectRadix.Content
-          className="border-purple z-20 rounded-md border bg-white shadow-md"
-          position="popper"
-          sideOffset={5}
-          align="center"
-        >
-          <SelectRadix.ScrollUpButton />
-          <SelectRadix.Viewport>
-            <SelectRadix.Item
-              value="option1"
+        <SelectValue placeholder="" className="inline sm:hidden" />
+      </SelectTrigger>
+      <SelectContent
+        className="border-purple z-20 rounded-md border bg-white shadow-md"
+        position="popper"
+        sideOffset={5}
+        align="center"
+      >
+        <SelectScrollUpButton />
+        <SelectViewport>
+          {cities.map((city) => (
+            <SelectItem
+              key={city.value}
+              value={city.value}
               className="px-4 py-2 text-xs hover:bg-brand-purple-light hover:text-brand-purple md:text-sm"
             >
-              <SelectRadix.ItemText>São Paulo, SP</SelectRadix.ItemText>
-              <SelectRadix.ItemIndicator />
-            </SelectRadix.Item>
-            <SelectRadix.Item
-              value="option2"
-              className="px-4 py-2 text-xs hover:bg-brand-purple-light hover:text-brand-purple md:text-sm"
-            >
-              <SelectRadix.ItemText>Rio de Janeiro, RJ</SelectRadix.ItemText>
-              <SelectRadix.ItemIndicator />
-            </SelectRadix.Item>
-          </SelectRadix.Viewport>
-        </SelectRadix.Content>
-      </SelectRadix.Portal>
-    </SelectRadix.Root>
+              <SelectItemText>{city.label}</SelectItemText>
+              <SelectItemIndicator />
+            </SelectItem>
+          ))}
+        </SelectViewport>
+      </SelectContent>
+    </Root>
   );
 }

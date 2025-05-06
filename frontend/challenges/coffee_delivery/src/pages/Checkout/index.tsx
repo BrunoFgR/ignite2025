@@ -11,6 +11,7 @@ import {
 } from "phosphor-react";
 import americano from "@/assets/americano.png";
 import { Divider } from "@/components/ui/divider";
+import { QuantitySelector } from "@/components/QuantitySelector";
 
 export function Checkout() {
   // Form field data for mapping
@@ -152,7 +153,7 @@ export function Checkout() {
                 {paymentMethods.map((method) => (
                   <Button
                     key={method.id}
-                    className="hover:bg-base-hover flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-base-title transition-colors hover:text-base-subtitle sm:flex-1"
+                    className="flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-base-title transition-colors hover:bg-base-hover hover:text-base-subtitle sm:flex-1"
                   >
                     {method.icon}
                     <div className="mt-[-0.50px] font-text-regular-s text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] text-base-text">
@@ -178,18 +179,8 @@ export function Checkout() {
                       Americano
                     </span>
                     <div className="flex flex-1 justify-center gap-2 self-stretch">
-                      <div className="flex items-center rounded-md bg-base-button px-2 py-1">
-                        <button className="flex h-5 w-5 items-center justify-center text-brand-purple">
-                          -
-                        </button>
-                        <span className="w-5 text-center text-base-text">
-                          1
-                        </span>
-                        <button className="flex h-5 w-5 items-center justify-center text-brand-purple">
-                          +
-                        </button>
-                      </div>
-                      <Button className="hover:bg-base-hover rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text hover:text-base-subtitle">
+                      <QuantitySelector />
+                      <Button className="rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text hover:bg-base-hover hover:text-base-subtitle">
                         <Trash className="h-4 w-4 text-brand-purple" />
                         <span className="hidden sm:inline">remover</span>
                       </Button>

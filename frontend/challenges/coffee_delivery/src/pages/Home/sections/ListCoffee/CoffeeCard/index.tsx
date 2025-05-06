@@ -1,8 +1,9 @@
 import { ShoppingCart } from "phosphor-react";
-import { Product } from "../../../../../context/ProductContext";
-import { Card, CardContent } from "../../../../../components/ui/card";
-import { getImage } from "../../../../../utils/getImage";
-import { currencyFormatter } from "../../../../../utils/formatter";
+import { Product } from "@/context/ProductContext";
+import { Card, CardContent } from "@/components/ui/card";
+import { getImage } from "@/utils/getImage";
+import { currencyFormatter } from "@/utils/formatter";
+import { QuantitySelector } from "@/components/QuantitySelector";
 
 export function CoffeeCard({
   title,
@@ -24,14 +25,14 @@ export function CoffeeCard({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="text-brand-yellow-dark bg-brand-yellow-light rounded-full px-2 py-1 text-[10px] font-bold uppercase"
+              className="rounded-full bg-brand-yellow-light px-2 py-1 text-[10px] font-bold uppercase text-brand-yellow-dark"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <h2 className="font-title-title-XL text-center text-xl font-bold leading-[24px] text-base-subtitle">
+        <h2 className="text-center font-title-title-XL text-xl font-bold leading-[24px] text-base-subtitle">
           {title}
         </h2>
 
@@ -46,17 +47,9 @@ export function CoffeeCard({
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
-            <div className="flex items-center rounded-md bg-base-button px-2 py-1">
-              <button className="text-brand-purple flex h-5 w-5 items-center justify-center">
-                -
-              </button>
-              <span className="w-5 text-center text-base-text">1</span>
-              <button className="text-brand-purple flex h-5 w-5 items-center justify-center">
-                +
-              </button>
-            </div>
+            <QuantitySelector />
 
-            <button className="bg-brand-purple-dark rounded-md p-2 text-white">
+            <button className="rounded-md bg-brand-purple-dark p-2 text-white hover:bg-brand-purple">
               <ShoppingCart weight="fill" />
             </button>
           </div>

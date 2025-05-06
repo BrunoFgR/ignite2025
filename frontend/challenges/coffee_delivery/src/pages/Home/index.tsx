@@ -1,6 +1,5 @@
 import { useContextSelector } from "use-context-selector";
 import { Banner } from "./sections/Banner";
-import { CoffeeCard } from "./sections/ListCoffee/CoffeeCard";
 import { ProductContext } from "../../context/ProductContext";
 import { ListCoffee } from "./sections/ListCoffee";
 
