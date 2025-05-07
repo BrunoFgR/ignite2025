@@ -16,7 +16,7 @@ interface ProductContextProviderProps {
   children: React.ReactNode;
 }
 
-interface ProductContextData {
+export interface ProductContextData {
   products: Product[];
 }
 
