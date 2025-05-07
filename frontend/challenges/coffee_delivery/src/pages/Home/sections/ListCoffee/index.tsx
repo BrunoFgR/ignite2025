@@ -1,5 +1,6 @@
 import { Product } from "@/context/ProductContext";
 import { CoffeeCard } from "./components/CoffeeCard";
+import { SkeletonCard } from "./components/SkeletonCard";
 
 interface ListCoffeeProps {
   products: Product[];
@@ -14,6 +15,11 @@ export function ListCoffee({ products }: ListCoffeeProps) {
         </h2>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+          {!products.length &&
+            [1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
+              <SkeletonCard key={value} />
+            ))}
+
           {products.map((product) => (
             <CoffeeCard key={product.id} {...product} />
           ))}

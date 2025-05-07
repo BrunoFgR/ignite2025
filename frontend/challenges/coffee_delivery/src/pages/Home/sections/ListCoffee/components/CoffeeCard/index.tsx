@@ -50,16 +50,18 @@ export function CoffeeCard({
   const findItemInCart = cart.find((item) => item.id === id);
 
   const handleAddToCart = useCallback(() => {
-    if (findItemInCart?.quantity !== quantity) {
+    if (
+      findItemInCart &&
+      findItemInCart.quantity !== quantity &&
+      quantity > 0
+    ) {
       addToCart({ id, title, price, quantity });
       toast({
         variant: "success",
         title: "Item updated",
         description: `${quantity} ${title} added to cart`,
       });
-    }
-
-    if (quantity === 0) {
+    } else if (quantity === 0) {
       removeFromCart(id);
       toast({
         variant: "success",
@@ -75,7 +77,7 @@ export function CoffeeCard({
       });
     }
   }, [
-    findItemInCart?.quantity,
+    findItemInCart,
     quantity,
     addToCart,
     id,
@@ -131,7 +133,7 @@ export function CoffeeCard({
             />
 
             <Button
-              className="rounded-md bg-brand-purple-dark p-2 text-white hover:bg-brand-purple"
+              className="rounded-md bg-brand-purple-dark px-[0.625rem] py-2 text-white hover:bg-brand-purple"
               disabled={isDisabled}
               onClick={handleAddToCart}
             >
