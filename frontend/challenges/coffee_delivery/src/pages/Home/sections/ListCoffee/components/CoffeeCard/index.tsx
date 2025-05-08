@@ -67,7 +67,7 @@ export function CoffeeCard({
       findItemInCart.quantity !== quantity &&
       quantity > 0
     ) {
-      addToCart({ id, title, price, quantity, stock: amount });
+      addToCart({ id, title, price, quantity, stock: amount, image });
       toast({
         variant: "success",
         title: "Item updated",
@@ -76,7 +76,7 @@ export function CoffeeCard({
     }
 
     if (!findItemInCart && quantity > 0) {
-      addToCart({ id, title, price, quantity, stock: amount });
+      addToCart({ id, title, price, quantity, stock: amount, image });
       toast({
         variant: "success",
         title: "Item added to cart",
@@ -86,13 +86,14 @@ export function CoffeeCard({
   }, [
     quantity,
     findItemInCart,
-    id,
     removeFromCart,
+    id,
     toast,
     title,
     addToCart,
     price,
     amount,
+    image,
   ]);
 
   const isDisabled =

@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({
-  product: { id, quantity, title, price, stock },
+  product: { id, quantity, title, price, stock, image },
 }: ProductCardProps) {
   const { updateCart, removeFromCart } = useCartContext(
     (cartContext) => cartContext,
@@ -37,7 +37,7 @@ export function ProductCard({
   return (
     <div className="flex flex-wrap justify-between px-1 py-2 sm:flex-nowrap">
       <div className="flex w-full items-center justify-between sm:w-auto sm:gap-5">
-        <img src={getImage(title)} alt={title} className="h-16 w-16" />
+        <img src={getImage(image)} alt={title} className="h-16 w-16" />
         <div className="flex flex-col items-start justify-center gap-2">
           <span className="font-text-regular-m text-base leading-[130%] text-base-subtitle">
             {title}
