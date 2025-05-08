@@ -42,6 +42,7 @@ export function PaymentCard() {
           {paymentMethods.map((method) => (
             <Button
               key={method.id}
+              type="button"
               className="flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-base-title transition-colors hover:bg-base-hover hover:text-base-subtitle sm:flex-1"
             >
               {method.icon}

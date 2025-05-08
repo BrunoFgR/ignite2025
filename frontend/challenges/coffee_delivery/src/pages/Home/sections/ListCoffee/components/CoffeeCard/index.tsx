@@ -19,7 +19,6 @@ export function CoffeeCard({
   tags,
   amount,
 }: Product) {
-  const [quantity, setQuantity] = useState(0);
   const { toast } = useToast();
   const { addToCart, cart, removeFromCart } = useCartContext(
     ({ addToCart, cart, removeFromCart }) => ({
@@ -28,6 +27,10 @@ export function CoffeeCard({
       removeFromCart,
     }),
   );
+  const [quantity, setQuantity] = useState(() => {
+    const itemInCart = cart.find((item) => item.id === id);
+    return itemInCart ? itemInCart.quantity : 0;
+  });
 
   const handleIncrease = useCallback(() => {
     if (quantity < amount) {
@@ -50,26 +53,30 @@ export function CoffeeCard({
   const findItemInCart = cart.find((item) => item.id === id);
 
   const handleAddToCart = useCallback(() => {
-    if (
-      findItemInCart &&
-      findItemInCart.quantity !== quantity &&
-      quantity > 0
-    ) {
-      addToCart({ id, title, price, quantity });
-      toast({
-        variant: "success",
-        title: "Item updated",
-        description: `${quantity} ${title} added to cart`,
-      });
-    } else if (quantity === 0) {
+    if (quantity === 0) {
       removeFromCart(id);
       toast({
         variant: "success",
         title: "Item removed from cart",
         description: `${title} removed from cart`,
       });
-    } else {
-      addToCart({ id, title, price, quantity });
+    }
+
+    if (
+      findItemInCart &&
+      findItemInCart.quantity !== quantity &&
+      quantity > 0
+    ) {
+      addToCart({ id, title, price, quantity, stock: amount });
+      toast({
+        variant: "success",
+        title: "Item updated",
+        description: `${quantity} ${title} added to cart`,
+      });
+    }
+
+    if (!findItemInCart && quantity > 0) {
+      addToCart({ id, title, price, quantity, stock: amount });
       toast({
         variant: "success",
         title: "Item added to cart",
@@ -77,14 +84,15 @@ export function CoffeeCard({
       });
     }
   }, [
-    findItemInCart,
     quantity,
-    addToCart,
+    findItemInCart,
     id,
-    title,
-    price,
-    toast,
     removeFromCart,
+    toast,
+    title,
+    addToCart,
+    price,
+    amount,
   ]);
 
   const isDisabled =
