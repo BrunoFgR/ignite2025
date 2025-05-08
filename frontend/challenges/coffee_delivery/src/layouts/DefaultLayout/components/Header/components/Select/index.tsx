@@ -35,7 +35,7 @@ export function Select() {
       onValueChange={handleValueChange}
     >
       <SelectTrigger
-        className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-2 py-2 text-sm text-brand-purple md:px-2 md:py-2"
+        className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-2 py-2 text-sm text-brand-purple dark:bg-brand-purple-light dark:text-white md:px-2 md:py-2"
         aria-label="city"
       >
         <SelectIcon>
@@ -48,7 +48,7 @@ export function Select() {
         <SelectValue placeholder="" className="inline sm:hidden" />
       </SelectTrigger>
       <SelectContent
-        className="border-purple z-20 rounded-md border bg-white shadow-md"
+        className="border-purple z-20 rounded-md border bg-white shadow-md dark:bg-base-card dark:border-base-button"
         position="popper"
         sideOffset={5}
         align="center"
@@ -59,7 +59,7 @@ export function Select() {
             <SelectItem
               key={city.value}
               value={city.value}
-              className="px-4 py-2 text-xs hover:bg-brand-purple-light hover:text-brand-purple md:text-sm"
+              className="px-4 py-2 text-xs hover:bg-brand-purple-light hover:text-brand-purple dark:text-base-subtitle dark:hover:bg-brand-purple-light dark:hover:text-white md:text-sm"
             >
               <SelectItemText>{city.label}</SelectItemText>
               <SelectItemIndicator />

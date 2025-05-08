@@ -30,14 +30,14 @@ export function Banner() {
   ];
 
   return (
-    <section className="relative min-h-[400px] w-full bg-cover py-6 md:h-[544px] md:py-0">
+    <section className="relative min-h-[400px] w-full bg-cover py-6 dark:bg-base-background md:h-[544px] md:py-0">
       <div className="container flex h-full flex-col items-center justify-between px-4 md:flex-row md:px-8 lg:px-8">
         <div className="flex w-full flex-col gap-4 text-center md:max-w-[700px] md:text-left">
-          <h1 className="font-title-title-XL text-3xl font-extrabold text-base-title sm:text-4xl md:text-5xl">
+          <h1 className="font-title-title-XL text-3xl font-extrabold text-base-title dark:text-base-title sm:text-4xl md:text-5xl">
             Encontre o café perfeito para qualquer hora do dia
           </h1>
 
-          <p className="font-text-regular-l text-base text-base-subtitle sm:text-lg md:text-xl">
+          <p className="font-text-regular-l text-base text-base-subtitle dark:text-base-subtitle sm:text-lg md:text-xl">
             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
             hora
           </p>
@@ -50,7 +50,7 @@ export function Banner() {
                 >
                   {feature.iconSrc}
                 </div>
-                <span className="font-text-regular-m text-[13px] text-base-text sm:text-base">
+                <span className="font-text-regular-m text-[13px] text-base-text dark:text-base-text sm:text-base">
                   {feature.text}
                 </span>
               </div>

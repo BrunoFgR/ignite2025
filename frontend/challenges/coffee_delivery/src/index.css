@@ -162,6 +162,23 @@
     --chart-4: 280 65% 60%;
 
     --chart-5: 340 75% 55%;
+
+    /* Dark mode custom variables */
+    --base-background: rgba(18, 18, 20, 1);
+    --base-input: rgba(38, 38, 40, 1);
+    --base-button: rgba(48, 48, 50, 1);
+    --base-card: rgba(29, 29, 32, 1);
+    --base-label: rgba(160, 160, 165, 1);
+    --base-subtitle: rgba(200, 200, 205, 1);
+    --base-text: rgba(180, 180, 190, 1);
+    --base-title: rgba(230, 230, 235, 1);
+    --base-hover: rgba(55, 55, 60, 1);
+    --brand-yellow: rgba(219, 172, 44, 1);
+    --brand-yellow-dark: rgba(196, 127, 23, 1);
+    --brand-purple: rgba(128, 71, 248, 1);
+    --brand-purple-dark: rgba(75, 41, 149, 1);
+    --brand-purple-light: rgba(45, 35, 65, 1);
+    --brand-yellow-light: rgba(51, 46, 28, 1);
   }
 }
 

@@ -101,7 +101,7 @@ export function CoffeeCard({
     findItemInCart?.quantity === quantity;
 
   return (
-    <Card className="flex w-64 transform flex-col items-center justify-self-center rounded-[6px_36px_6px_36px] bg-base-card p-5 shadow-md transition hover:scale-105">
+    <Card className="flex w-64 transform flex-col items-center justify-self-center rounded-[6px_36px_6px_36px] bg-base-card p-5 shadow-md transition hover:scale-105 dark:border dark:border-base-button">
       <img
         src={getImage(image)}
         alt="image"
@@ -130,8 +130,8 @@ export function CoffeeCard({
 
         <div className="mt-auto flex w-full items-center justify-between">
           <div className="font-title-title-XL text-2xl font-extrabold text-base-text">
-            <span className="mr-1 text-sm font-normal text-base-text">R$</span>
-            {currencyFormatter(price)}
+            <span className="mr-1 text-sm font-normal text-base-text dark:text-base-label">R$</span>
+            {currencyFormatter(price).replace("R$", "").trim()}
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
@@ -142,7 +142,7 @@ export function CoffeeCard({
             />
 
             <Button
-              className="rounded-md bg-brand-purple-dark px-[0.625rem] py-2 text-white hover:bg-brand-purple"
+              className="rounded-md bg-brand-purple-dark px-[0.625rem] py-2 text-white hover:bg-brand-purple dark:hover:bg-brand-purple-light"
               disabled={isDisabled}
               onClick={handleAddToCart}
             >

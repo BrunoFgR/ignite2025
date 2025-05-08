@@ -39,7 +39,7 @@ export function ProductCard({
       <div className="flex w-full items-center justify-between sm:w-auto sm:gap-5">
         <img src={getImage(image)} alt={title} className="h-16 w-16" />
         <div className="flex flex-col items-start justify-center gap-2">
-          <span className="font-text-regular-m text-base leading-[130%] text-base-subtitle">
+          <span className="font-text-regular-m text-base leading-[130%] text-base-subtitle dark:text-base-subtitle">
             {title}
           </span>
           <div className="flex flex-1 justify-center gap-2 self-stretch">
@@ -49,7 +49,7 @@ export function ProductCard({
               onIncrease={handleIncrease}
             />
             <Button
-              className="rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text hover:bg-base-hover hover:text-base-subtitle"
+              className="rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text hover:bg-base-hover hover:text-base-subtitle dark:hover:bg-base-hover dark:hover:text-base-title"
               type="button"
               onClick={handleRemoveFromCart}
             >
@@ -59,7 +59,7 @@ export function ProductCard({
           </div>
         </div>
       </div>
-      <div className="mt-2 w-full text-right text-base font-bold leading-[130%] text-base-text sm:mt-0 sm:w-auto">
+      <div className="mt-2 w-full text-right text-base font-bold leading-[130%] text-base-text dark:text-base-title sm:mt-0 sm:w-auto">
         <strong>{currencyFormatter(price)}</strong>
       </div>
     </div>

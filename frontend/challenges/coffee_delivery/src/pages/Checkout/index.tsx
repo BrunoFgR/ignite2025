@@ -56,21 +56,21 @@ export function Checkout() {
   };
 
   return (
-    <div className="flex max-w-full flex-col px-4 lg:px-8 xl:px-40">
+    <div className="flex max-w-full flex-col px-4 dark:bg-base-background md:pt-4 lg:px-8 xl:px-40">
       <Form {...checkoutForm}>
         <form
           onSubmit={checkoutForm.handleSubmit(onSubmit)}
           className="mb-12 flex flex-col justify-start gap-8 lg:mb-0 lg:flex-row"
         >
           <div className="flex w-full flex-col items-start gap-3">
-            <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle">
+            <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle dark:text-base-title">
               Complete seu pedido
             </h2>
             <AddressCard />
             <PaymentCard />
           </div>
           <div className="mt-4 flex w-full flex-col gap-3 lg:mt-0 lg:max-w-[440px]">
-            <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle">
+            <h2 className="font-title-title-XL text-lg font-bold leading-[130%] text-base-subtitle dark:text-base-title">
               Cafés selecionados
             </h2>
             <CartCard />

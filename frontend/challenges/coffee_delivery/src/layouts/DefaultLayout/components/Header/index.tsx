@@ -4,10 +4,11 @@ import { Badge } from "./components/Badge";
 import { Select } from "./components/Select";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ModeTroggle";
 
 export function Header() {
   return (
-    <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between bg-base-background px-4 py-4 sm:px-6 md:px-8 md:py-6 lg:px-16 lg:py-8 xl:px-40">
+    <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between bg-base-background px-4 py-4 shadow-sm dark:border-b dark:border-base-button sm:px-6 md:px-8 md:py-6 lg:px-16 lg:py-8 xl:px-40">
       <Link to="/">
         <img
           src={logo}
@@ -17,6 +18,7 @@ export function Header() {
       </Link>
 
       <div className="flex items-center gap-2 md:gap-3">
+        <ModeToggle />
         <Select />
         <Link to="/checkout">
           <Badge>
