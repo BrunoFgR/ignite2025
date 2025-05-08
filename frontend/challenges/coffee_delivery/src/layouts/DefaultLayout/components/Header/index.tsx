@@ -20,7 +20,7 @@ export function Header() {
         <Select />
         <Link to="/checkout">
           <Badge>
-            <Button className="rounded-md bg-brand-yellow-light p-1 text-brand-yellow hover:border-brand-yellow-dark hover:bg-brand-yellow-light md:px-[0.625rem] md:py-2">
+            <Button className="rounded-md bg-brand-yellow-light px-2 text-brand-yellow hover:border-brand-yellow-dark hover:bg-brand-yellow-light md:px-[0.625rem] md:py-2">
               <ShoppingCart weight="fill" className="size-[22px]" />
             </Button>
           </Badge>

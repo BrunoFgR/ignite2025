@@ -35,7 +35,7 @@ export function Select() {
       onValueChange={handleValueChange}
     >
       <SelectTrigger
-        className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-1 py-1 text-sm text-brand-purple md:px-2 md:py-2"
+        className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-2 py-2 text-sm text-brand-purple md:px-2 md:py-2"
         aria-label="city"
       >
         <SelectIcon>
