@@ -159,7 +159,7 @@ export function AddressCard() {
               control={control}
               name="address.uf"
               render={({ field }) => (
-                <FormItem className="relative flex w-full flex-col sm:w-[60px]">
+                <FormItem className="relative flex w-full flex-col sm:w-[70px]">
                   <FormControl>
                     <Input
                       className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark"

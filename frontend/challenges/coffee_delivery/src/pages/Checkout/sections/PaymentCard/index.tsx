@@ -1,8 +1,13 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FormField } from "@/components/ui/form";
 import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
+import { useFormContext } from "react-hook-form";
+import { CheckoutFormData } from "../..";
+import { RadioGroupItem, Root } from "@radix-ui/react-radio-group";
 
 export function PaymentCard() {
+  const { control } = useFormContext<CheckoutFormData>();
+
   const paymentMethods = [
     {
       id: "credit",
@@ -39,18 +44,30 @@ export function PaymentCard() {
         </div>
 
         <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
-          {paymentMethods.map((method) => (
-            <Button
-              key={method.id}
-              type="button"
-              className="flex w-full items-center gap-3 rounded-md bg-base-button p-4 text-base-title transition-colors hover:bg-base-hover hover:text-base-subtitle sm:flex-1"
-            >
-              {method.icon}
-              <div className="mt-[-0.50px] font-text-regular-s text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] text-base-text">
-                {method.label}
-              </div>
-            </Button>
-          ))}
+          <FormField
+            control={control}
+            name="paymentMethod"
+            render={({ field }) => (
+              <Root
+                onChange={field.onChange}
+                defaultValue={field.value}
+                className="flex w-full flex-col items-center justify-center gap-3 xl:flex-row"
+              >
+                {paymentMethods.map((method) => (
+                  <RadioGroupItem
+                    value={method.id}
+                    key={method.id}
+                    className="flex w-full items-center justify-center gap-3 rounded-md bg-base-button p-4 text-base-title transition-colors hover:bg-base-hover hover:text-base-subtitle data-[state=checked]:border data-[state=checked]:border-brand-purple data-[state=checked]:bg-brand-purple-light sm:flex-1"
+                  >
+                    {method.icon}
+                    <div className="mt-[-0.50px] font-text-regular-s text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] text-base-text">
+                      {method.label}
+                    </div>
+                  </RadioGroupItem>
+                ))}
+              </Root>
+            )}
+          />
         </div>
       </CardContent>
     </Card>
