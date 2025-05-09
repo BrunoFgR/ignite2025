@@ -22,7 +22,12 @@ interface Response {
 }
 
 export function AddressCard() {
-  const { control, watch, setValue } = useFormContext<CheckoutFormData>();
+  const {
+    control,
+    watch,
+    setValue,
+    formState: { isSubmitting },
+  } = useFormContext<CheckoutFormData>();
   const cepMaskOption = useMemo(
     () => ({
       mask: "_____-___",
@@ -30,8 +35,11 @@ export function AddressCard() {
     }),
     [],
   );
+
   const cepRef = useMask(cepMaskOption);
   const cep = watch("address.cep");
+  const cart = watch("items");
+  const isCartEmpty = cart.length === 0;
 
   const getAddress = useCallback(async () => {
     try {
@@ -83,6 +91,7 @@ export function AddressCard() {
                   <Input
                     className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label sm:w-[200px]"
                     placeholder="CEP"
+                    disabled={isCartEmpty || isSubmitting}
                     {...field}
                     ref={cepRef}
                   />
@@ -102,6 +111,7 @@ export function AddressCard() {
                 <FormControl>
                   <Input
                     type="text"
+                    disabled={isCartEmpty || isSubmitting}
                     className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                     placeholder="Rua"
                     {...field}
@@ -121,6 +131,7 @@ export function AddressCard() {
                 <FormItem className="relative flex w-full flex-col sm:w-auto">
                   <FormControl>
                     <Input
+                      disabled={isCartEmpty || isSubmitting}
                       className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label sm:w-[200px]"
                       placeholder="Número"
                       {...field}
@@ -141,6 +152,7 @@ export function AddressCard() {
                       <Input
                         className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:text-base-title dark:placeholder:text-base-label"
                         placeholder="Complemento"
+                        disabled={isCartEmpty || isSubmitting}
                         {...field}
                       />
                     </FormControl>
@@ -165,6 +177,7 @@ export function AddressCard() {
                     <Input
                       className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                       placeholder="Bairro"
+                      disabled={isCartEmpty || isSubmitting}
                       {...field}
                     />
                   </FormControl>
@@ -182,6 +195,7 @@ export function AddressCard() {
                     <Input
                       className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                       placeholder="Cidade"
+                      disabled={isCartEmpty || isSubmitting}
                       {...field}
                     />
                   </FormControl>
@@ -199,6 +213,7 @@ export function AddressCard() {
                     <Input
                       className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                       placeholder="UF"
+                      disabled={isCartEmpty || isSubmitting}
                       {...field}
                     />
                   </FormControl>
