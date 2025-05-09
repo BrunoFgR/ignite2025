@@ -9,15 +9,50 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useMask } from "@react-input/mask";
+import { useMask, unformat } from "@react-input/mask";
+import { useCallback, useEffect, useMemo } from "react";
+import { cepUrl } from "@/lib/axios";
+
+interface Response {
+  logradouro: string;
+  complemento: string;
+  uf: string;
+  localidade: string;
+  bairro: string;
+}
 
 export function AddressCard() {
-  const { control } = useFormContext<CheckoutFormData>();
-  const cepMaskOption = {
-    mask: "_____-___",
-    replacement: { _: /\d/ },
-  };
+  const { control, watch, setValue } = useFormContext<CheckoutFormData>();
+  const cepMaskOption = useMemo(
+    () => ({
+      mask: "_____-___",
+      replacement: { _: /\d/ },
+    }),
+    [],
+  );
   const cepRef = useMask(cepMaskOption);
+  const cep = watch("address.cep");
+
+  const getAddress = useCallback(async () => {
+    try {
+      if (cep.length === 9) {
+        const response = await cepUrl.get<Response>(
+          `/${unformat(cep, cepMaskOption)}/json`,
+        );
+        setValue("address.street", response.data.logradouro);
+        setValue("address.complement", response.data.complemento);
+        setValue("address.city", response.data.localidade);
+        setValue("address.uf", response.data.uf);
+        setValue("address.neighborhood", response.data.bairro);
+      }
+    } catch {
+      console.error("Error fetching address");
+    }
+  }, [cep, cepMaskOption, setValue]);
+
+  useEffect(() => {
+    getAddress();
+  }, [getAddress]);
 
   return (
     <Card className="w-full rounded-md bg-base-card dark:border dark:border-base-button">
@@ -46,7 +81,7 @@ export function AddressCard() {
               <FormItem className="relative flex w-full flex-col">
                 <FormControl className="">
                   <Input
-                    className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:bg-base-input dark:border-base-button dark:text-base-title dark:placeholder:text-base-label sm:w-[200px]"
+                    className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label sm:w-[200px]"
                     placeholder="CEP"
                     {...field}
                     ref={cepRef}
@@ -67,7 +102,7 @@ export function AddressCard() {
                 <FormControl>
                   <Input
                     type="text"
-                    className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:bg-base-input dark:border-base-button dark:text-base-title dark:placeholder:text-base-label"
+                    className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                     placeholder="Rua"
                     {...field}
                   />
@@ -86,7 +121,7 @@ export function AddressCard() {
                 <FormItem className="relative flex w-full flex-col sm:w-auto">
                   <FormControl>
                     <Input
-                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:bg-base-input dark:border-base-button dark:text-base-title dark:placeholder:text-base-label sm:w-[200px]"
+                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label sm:w-[200px]"
                       placeholder="Número"
                       {...field}
                     />
@@ -101,7 +136,7 @@ export function AddressCard() {
               name="address.complement"
               render={({ field }) => (
                 <FormItem className="relative flex w-full flex-col">
-                  <div className="flex flex-1 items-start rounded border border-solid border-base-button bg-base-input dark:bg-base-input dark:border-base-button">
+                  <div className="flex flex-1 items-start rounded border border-solid border-base-button bg-base-input dark:border-base-button dark:bg-base-input">
                     <FormControl>
                       <Input
                         className="h-auto border-none bg-transparent p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:text-base-title dark:placeholder:text-base-label"
@@ -128,7 +163,7 @@ export function AddressCard() {
                 <FormItem className="relative flex w-full flex-col sm:w-[200px]">
                   <FormControl>
                     <Input
-                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:bg-base-input dark:border-base-button dark:text-base-title dark:placeholder:text-base-label"
+                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                       placeholder="Bairro"
                       {...field}
                     />
@@ -145,7 +180,7 @@ export function AddressCard() {
                 <FormItem className="relative flex w-full flex-col">
                   <FormControl>
                     <Input
-                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:bg-base-input dark:border-base-button dark:text-base-title dark:placeholder:text-base-label"
+                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                       placeholder="Cidade"
                       {...field}
                     />
@@ -162,7 +197,7 @@ export function AddressCard() {
                 <FormItem className="relative flex w-full flex-col sm:w-[70px]">
                   <FormControl>
                     <Input
-                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:bg-base-input dark:border-base-button dark:text-base-title dark:placeholder:text-base-label"
+                      className="h-auto rounded border border-solid border-base-button bg-base-input p-3 font-text-regular-s text-[length:var(--text-regular-s-font-size)] leading-[var(--text-regular-s-line-height)] tracking-[var(--text-regular-s-letter-spacing)] text-base-text placeholder:text-base-label focus-visible:ring-brand-yellow-dark dark:border-base-button dark:bg-base-input dark:text-base-title dark:placeholder:text-base-label"
                       placeholder="UF"
                       {...field}
                     />
