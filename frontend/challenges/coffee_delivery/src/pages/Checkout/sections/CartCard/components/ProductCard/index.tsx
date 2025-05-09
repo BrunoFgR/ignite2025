@@ -35,7 +35,11 @@ export function ProductCard({
   return (
     <div className="flex flex-wrap justify-between px-1 py-2 sm:flex-nowrap">
       <div className="flex w-full items-center justify-between sm:w-auto sm:gap-5">
-        <img src={getImage(image)} alt={title} className="h-16 w-16" />
+        <img
+          src={getImage(image)}
+          alt={title}
+          className="h-20 w-20 sm:h-16 sm:w-16"
+        />
         <div className="flex flex-col items-start justify-center gap-2">
           <span className="font-text-regular-m text-base leading-[130%] text-base-subtitle dark:text-base-subtitle">
             {title}

@@ -5,6 +5,8 @@ import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PaymentCard } from "./sections/PaymentCard";
 import { CartCard } from "./sections/CartCard";
+import { useCartContext } from "@/hooks/useCart";
+import { useEffect } from "react";
 
 const checkoutValidationSchema = z.object({
   address: z.object({
@@ -23,10 +25,12 @@ const checkoutValidationSchema = z.object({
   paymentMethod: z.enum(["credit", "debit", "money"]),
   items: z.array(
     z.object({
-      id: z.string(),
-      name: z.string(),
+      id: z.number(),
+      title: z.string(),
       price: z.number(),
       quantity: z.number().min(1),
+      stock: z.number().min(1),
+      image: z.string(),
     }),
   ),
 });
@@ -34,6 +38,8 @@ const checkoutValidationSchema = z.object({
 export type CheckoutFormData = z.infer<typeof checkoutValidationSchema>;
 
 export function Checkout() {
+  const { cart } = useCartContext();
+
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutValidationSchema),
     defaultValues: {
@@ -50,6 +56,12 @@ export function Checkout() {
       items: [],
     },
   });
+
+  const { setValue } = checkoutForm;
+
+  useEffect(() => {
+    setValue("items", cart);
+  }, [cart, setValue]);
 
   const onSubmit = (data: CheckoutFormData) => {
     console.log(data);
