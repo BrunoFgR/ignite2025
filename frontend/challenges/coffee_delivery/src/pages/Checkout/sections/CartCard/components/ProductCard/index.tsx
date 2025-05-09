@@ -14,9 +14,7 @@ interface ProductCardProps {
 export function ProductCard({
   product: { id, quantity, title, price, stock, image },
 }: ProductCardProps) {
-  const { updateCart, removeFromCart } = useCartContext(
-    (cartContext) => cartContext,
-  );
+  const { updateCart, removeFromCart } = useCartContext();
 
   const handleIncrease = useCallback(() => {
     if (quantity < stock) {

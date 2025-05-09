@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { cartReducer, CartStates } from "@/reducers/products/reducer";
 import { ProductActionsArgs } from "@/reducers/products/actions";
 import { useContextSelector } from "use-context-selector";
-import { CartContext, CartContextProps } from "@/context/CartContext";
+import { CartContext } from "@/context/CartContext";
 
 export function useCartReducer(initialState: CartStates) {
   return useReducer<CartStates, [ProductActionsArgs]>(
@@ -11,5 +11,6 @@ export function useCartReducer(initialState: CartStates) {
   );
 }
 
-export const useCartContext = <T>(selector: (data: CartContextProps) => T) =>
-  useContextSelector<CartContextProps, T>(CartContext, selector);
+export const useCartContext = () => {
+  return useContextSelector(CartContext, (context) => context);
+};

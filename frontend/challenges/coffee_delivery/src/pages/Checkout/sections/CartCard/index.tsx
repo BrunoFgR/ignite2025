@@ -6,7 +6,7 @@ import { useCartContext } from "@/hooks/useCart";
 import React from "react";
 
 export function CartCard() {
-  const { cart } = useCartContext((cartContext) => cartContext);
+  const { cart } = useCartContext();
 
   return (
     <Card className="rounded-md bg-base-card p-4 dark:border dark:border-base-button md:p-10 lg:rounded-[6px_44px]">

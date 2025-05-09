@@ -1,7 +1,7 @@
 import { useCartContext } from "@/hooks/useCart";
 
 export function Badge({ children }: { children: React.ReactNode }) {
-  const { cart } = useCartContext(({ cart }) => ({ cart }));
+  const { cart } = useCartContext();
 
   return (
     <div className="relative">

@@ -3,7 +3,7 @@ import { Banner } from "./sections/Banner";
 import { ListCoffee } from "./sections/ListCoffee";
 
 export function Home() {
-  const { products } = useProductContext(({ products }) => ({ products }));
+  const { products } = useProductContext();
 
   return (
     <div className="flex min-h-screen flex-col">

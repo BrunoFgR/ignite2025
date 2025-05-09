@@ -20,13 +20,7 @@ export function CoffeeCard({
   amount,
 }: Product) {
   const { toast } = useToast();
-  const { addToCart, cart, removeFromCart } = useCartContext(
-    ({ addToCart, cart, removeFromCart }) => ({
-      addToCart,
-      cart,
-      removeFromCart,
-    }),
-  );
+  const { addToCart, cart, removeFromCart } = useCartContext();
   const [quantity, setQuantity] = useState(() => {
     const itemInCart = cart.find((item) => item.id === id);
     return itemInCart ? itemInCart.quantity : 0;
@@ -130,7 +124,9 @@ export function CoffeeCard({
 
         <div className="mt-auto flex w-full items-center justify-between">
           <div className="font-title-title-XL text-2xl font-extrabold text-base-text">
-            <span className="mr-1 text-sm font-normal text-base-text dark:text-base-label">R$</span>
+            <span className="mr-1 text-sm font-normal text-base-text dark:text-base-label">
+              R$
+            </span>
             {currencyFormatter(price).replace("R$", "").trim()}
           </div>
 
