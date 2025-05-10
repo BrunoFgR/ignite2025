@@ -32,8 +32,9 @@ export function CoffeeCard({
     } else {
       toast({
         variant: "destructive",
-        title: "Max quantity reached",
-        description: "You cannot add more than the available amount",
+        title: "Quantidade máxima atingida",
+        description:
+          "Você não pode adicionar mais do que a quantidade disponível",
       });
     }
   }, [amount, quantity, toast]);
@@ -51,8 +52,8 @@ export function CoffeeCard({
       removeFromCart(id);
       toast({
         variant: "success",
-        title: "Item removed from cart",
-        description: `${title} removed from cart`,
+        title: "Item removido do carrinho",
+        description: `${title} removido do carrinho`,
       });
     }
 
@@ -64,8 +65,8 @@ export function CoffeeCard({
       addToCart({ id, title, price, quantity, stock: amount, image });
       toast({
         variant: "success",
-        title: "Item updated",
-        description: `${quantity} ${title} added to cart`,
+        title: "Item atualizado",
+        description: `${quantity} ${title} adicionado ao carrinho`,
       });
     }
 
@@ -73,8 +74,8 @@ export function CoffeeCard({
       addToCart({ id, title, price, quantity, stock: amount, image });
       toast({
         variant: "success",
-        title: "Item added to cart",
-        description: `${quantity} ${title} added to cart`,
+        title: "Item adicionado ao carrinho",
+        description: `${quantity} ${title} adicionado ao carrinho`,
       });
     }
   }, [

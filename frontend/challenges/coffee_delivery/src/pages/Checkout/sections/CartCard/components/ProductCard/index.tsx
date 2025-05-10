@@ -6,6 +6,7 @@ import { currencyFormatter } from "@/utils/formatter";
 import { useCartContext } from "@/hooks/useCart";
 import { useCallback } from "react";
 import { getImage } from "@/utils/getImage";
+import { useToast } from "@/hooks/useToast";
 
 interface ProductCardProps {
   product: CartItem;
@@ -15,12 +16,21 @@ export function ProductCard({
   product: { id, quantity, title, price, stock, image },
 }: ProductCardProps) {
   const { updateCart, removeFromCart } = useCartContext();
+  const { toast } = useToast();
 
   const handleIncrease = useCallback(() => {
+    if (quantity == stock) {
+      toast({
+        title: "Quantidade máxima atingida",
+        description: "Você não pode adicionar mais itens ao carrinho.",
+        variant: "destructive",
+      });
+    }
+
     if (quantity < stock) {
       updateCart(id, quantity + 1);
     }
-  }, [id, quantity, stock, updateCart]);
+  }, [id, quantity, stock, toast, updateCart]);
 
   const handleDecrease = useCallback(() => {
     if (quantity > 1) {
@@ -30,7 +40,12 @@ export function ProductCard({
 
   const handleRemoveFromCart = useCallback(() => {
     removeFromCart(id);
-  }, [id, removeFromCart]);
+    toast({
+      title: "Item removido do carrinho",
+      description: "O item foi removido com sucesso.",
+      variant: "success",
+    });
+  }, [id, removeFromCart, toast]);
 
   return (
     <div className="flex flex-wrap justify-between px-1 py-2 sm:flex-nowrap">

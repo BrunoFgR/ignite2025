@@ -9,7 +9,7 @@ import { ModeToggle } from "@/components/ModeTroggle";
 export function Header() {
   return (
     <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between bg-base-background px-4 py-4 shadow-sm dark:border-b dark:border-base-button sm:px-6 md:px-8 md:py-6 lg:px-16 lg:py-8 xl:px-40">
-      <Link to="/">
+      <Link to="/" title="Home">
         <img
           src={logo}
           className="h-8 w-[70px] md:h-10 md:w-[85px]"
