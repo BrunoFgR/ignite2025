@@ -1,5 +1,5 @@
 import { useCartReducer } from "@/hooks/useCart";
-import { CartItem } from "@/reducers/products/reducer";
+import { CartItem } from "@/reducers/cart/reducer";
 import { useCallback } from "react";
 import { createContext } from "use-context-selector";
 
@@ -8,6 +8,7 @@ export interface CartContextProps {
   addToCart: (product: CartItem) => void;
   removeFromCart: (productId: number) => void;
   updateCart: (productId: number, quantity: number) => void;
+  cleanCart: () => void;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -45,11 +46,16 @@ export function CartContextProvider({
     [dispatch],
   );
 
+  const cleanCart = useCallback(() => {
+    dispatch({ type: "CLEAN_CART" });
+  }, [dispatch]);
+
   const value = {
     cart,
     addToCart,
     removeFromCart,
     updateCart,
+    cleanCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

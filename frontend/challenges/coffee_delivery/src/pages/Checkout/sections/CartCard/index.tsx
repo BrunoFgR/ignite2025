@@ -6,8 +6,14 @@ import { useCartContext } from "@/hooks/useCart";
 import { ProductCard } from "./components/ProductCard";
 import { CalculateCart } from "./components/CalculateCart";
 import { EmptyCart } from "./components/EmptyCart";
+import { useFormContext } from "react-hook-form";
+import { CheckoutFormData } from "../..";
+import { Loader2 } from "lucide-react";
 
 export function CartCard() {
+  const {
+    formState: { isSubmitting },
+  } = useFormContext<CheckoutFormData>();
   const { cart } = useCartContext();
 
   return (
@@ -28,8 +34,12 @@ export function CartCard() {
             <Button
               type="submit"
               title="Confirmar pedido"
+              disabled={isSubmitting}
               className="rounded-md bg-brand-yellow px-2 py-3 font-bold text-white hover:bg-brand-yellow-dark dark:hover:brightness-90"
             >
+              {isSubmitting && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              )}
               CONFIRMAR PEDIDO
             </Button>
           </>

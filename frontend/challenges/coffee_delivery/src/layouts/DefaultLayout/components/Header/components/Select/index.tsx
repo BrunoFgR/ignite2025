@@ -26,12 +26,11 @@ interface AdressResponse {
 }
 
 export function Select() {
-  const [selectedCity, setSelectedCity] = useState("");
   const [addresses, setAddresses] = useState<AdressResponse[]>([]);
 
   const getAddresses = useCallback(async () => {
     try {
-      const { data } = await mainUrl.get<AdressResponse[]>("/addresses");
+      const { data } = await mainUrl.get<AdressResponse[]>("/address");
       setAddresses(data);
     } catch (error) {
       console.error(error);
@@ -44,20 +43,11 @@ export function Select() {
 
   const selectOptions = addresses.map((address) => ({
     value: address.id.toString(),
-    label: `${address.street}, ${address.number} - ${address.uf}`,
+    label: `${address.street}, ${address.number}`,
   }));
 
-  const handleValueChange = (value: string) => {
-    const selectedOption = selectOptions.find(
-      (option) => option.value === value,
-    );
-    if (selectedOption) {
-      setSelectedCity(selectedOption.label);
-    }
-  };
-
   return (
-    <Root value={selectedCity} onValueChange={handleValueChange}>
+    <Root>
       <SelectTrigger
         className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-2 py-2 text-sm text-brand-purple dark:bg-brand-purple-light dark:text-white md:px-2 md:py-2"
         aria-label="city"
@@ -70,7 +60,6 @@ export function Select() {
           placeholder="Meus endereços"
           className="hidden whitespace-nowrap sm:inline"
         />
-        <SelectValue placeholder="" className="inline sm:hidden" />
       </SelectTrigger>
       <SelectContent
         className="border-purple z-20 rounded-md border bg-white shadow-md dark:border-base-button dark:bg-base-card"

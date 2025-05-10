@@ -1,6 +1,6 @@
 import { useReducer } from "react";
-import { cartReducer, CartStates } from "@/reducers/products/reducer";
-import { ProductActionsArgs } from "@/reducers/products/actions";
+import { cartReducer, CartStates } from "@/reducers/cart/reducer";
+import { ProductActionsArgs } from "@/reducers/cart/actions";
 import { useContextSelector } from "use-context-selector";
 import { CartContext } from "@/context/CartContext";
 

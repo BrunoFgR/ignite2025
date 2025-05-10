@@ -62,6 +62,11 @@ export function cartReducer(
         product.quantity = actions.payload.quantity;
       });
     }
+    case "CLEAN_CART": {
+      return produce(state, (draft) => {
+        draft.cart = [];
+      });
+    }
   }
 
   return state;
