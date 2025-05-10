@@ -51,6 +51,7 @@ export function ProductCard({
               onIncrease={handleIncrease}
             />
             <Button
+              title="Remover"
               className="rounded-md bg-base-button font-title-title-s text-xs uppercase leading-[160%] text-base-text hover:bg-base-hover hover:text-base-subtitle dark:hover:bg-base-hover dark:hover:text-base-title"
               type="button"
               onClick={handleRemoveFromCart}

@@ -27,6 +27,7 @@ export function CartCard() {
             <CalculateCart />
             <Button
               type="submit"
+              title="Confirmar pedido"
               className="rounded-md bg-brand-yellow px-2 py-3 font-bold text-white hover:bg-brand-yellow-dark dark:hover:brightness-90"
             >
               CONFIRMAR PEDIDO

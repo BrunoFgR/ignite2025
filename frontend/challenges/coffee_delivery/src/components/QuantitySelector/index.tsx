@@ -13,14 +13,18 @@ export function QuantitySelector({
     <div className="flex items-center rounded-md bg-base-button px-2 py-1 dark:border dark:border-base-hover">
       <button
         type="button"
+        title="Diminuir quantidade"
         className="flex h-5 w-5 flex-1 items-center justify-center text-brand-purple hover:text-brand-purple-dark dark:hover:text-brand-purple-light"
         onClick={onDecrease}
       >
         -
       </button>
-      <span className="w-5 text-center text-base-text dark:text-base-subtitle">{value}</span>
+      <span className="w-5 text-center text-base-text dark:text-base-subtitle">
+        {value}
+      </span>
       <button
         type="button"
+        title="Aumentar quantidade"
         className="flex h-5 w-5 flex-1 items-center justify-center text-brand-purple hover:text-brand-purple-dark dark:hover:text-brand-purple-light"
         onClick={onIncrease}
       >

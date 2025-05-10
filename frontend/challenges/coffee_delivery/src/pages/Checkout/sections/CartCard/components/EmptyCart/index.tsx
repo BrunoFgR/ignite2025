@@ -22,6 +22,7 @@ export function EmptyCart() {
 
       <Button
         onClick={() => navigate("/")}
+        title="Continuar comprando"
         className="rounded-md bg-brand-yellow px-6 py-3 font-bold text-white hover:bg-brand-yellow-dark dark:hover:brightness-90"
       >
         CONTINUAR COMPRANDO

@@ -138,6 +138,7 @@ export function CoffeeCard({
             />
 
             <Button
+              title="Adicionar ao carrinho"
               className="rounded-md bg-brand-purple-dark px-[0.625rem] py-2 text-white hover:bg-brand-purple dark:hover:bg-brand-purple-light"
               disabled={isDisabled}
               onClick={handleAddToCart}
