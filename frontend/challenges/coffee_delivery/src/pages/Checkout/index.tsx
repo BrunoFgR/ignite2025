@@ -22,7 +22,7 @@ const checkoutValidationSchema = z.object({
     city: z.string().min(2).max(100),
     uf: z.string().min(1).max(2),
   }),
-  paymentMethod: z.enum(["credit", "debit", "money"]),
+  paymentMethod: z.union([z.string(), z.enum(["credit", "debit", "cash"])]),
   items: z.array(
     z.object({
       id: z.number(),

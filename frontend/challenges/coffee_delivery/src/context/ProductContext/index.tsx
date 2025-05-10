@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { createContext } from "use-context-selector";
-import { productsURL } from "../../lib/axios";
+import { mainUrl } from "../../lib/axios";
 
 export interface Product {
   id: number;
@@ -31,7 +31,7 @@ export const ProductContextProvider = ({
   const [products, setProducts] = useState<Product[]>([]);
 
   const fetchProducts = useCallback(async () => {
-    const { data } = await productsURL.get<Product[]>("/coffees");
+    const { data } = await mainUrl.get<Product[]>("/coffees");
     setProducts(data);
   }, []);
 

@@ -126,5 +126,24 @@
       "tags": ["especial", "alcoólico"],
       "amount": 2
     }
-  ]
+  ],
+  "payments": [
+    {
+      "id": "credit",
+      "title": "Cartão de Crédito",
+      "description": "Pagamento com cartão de crédito"
+    },
+    {
+      "id": "debit",
+      "title": "Cartão de Débito",
+      "description": "Pagamento com cartão de débito"
+    },
+    {
+      "id": "cash",
+      "title": "Dinheiro",
+      "description": "Dinheiro"
+    }
+  ],
+  "addresses": [],
+  "purchases": []
 }

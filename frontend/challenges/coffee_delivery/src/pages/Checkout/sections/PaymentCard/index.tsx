@@ -4,27 +4,50 @@ import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
 import { useFormContext } from "react-hook-form";
 import { CheckoutFormData } from "../..";
 import { RadioGroupItem, Root } from "@radix-ui/react-radio-group";
+import { JSX, useCallback, useEffect, useState } from "react";
+import { mainUrl } from "@/lib/axios";
+import { Skeleton } from "@/components/ui/skeleton";
+
+type Method = "credit" | "debit" | "cash";
+
+interface PaymentMethodsRequest {
+  id: Method;
+  title: string;
+  description: string;
+}
+
+type PaymentMethods = PaymentMethodsRequest & {
+  icon: JSX.Element;
+};
 
 export function PaymentCard() {
-  const { control } = useFormContext<CheckoutFormData>();
+  const [paymentMethods, setPaymentMethods] = useState<PaymentMethods[]>([]);
 
-  const paymentMethods = [
-    {
-      id: "credit",
-      label: "CARTÃO DE CRÉDITO",
-      icon: <Money size={16} className="text-brand-purple" />,
-    },
-    {
-      id: "debit",
-      label: "CARTÃO DE DÉBITO",
-      icon: <Bank size={16} className="text-brand-purple" />,
-    },
-    {
-      id: "cash",
-      label: "DINHEIRO",
-      icon: <CreditCard size={16} className="text-brand-purple" />,
-    },
-  ];
+  const getIcon = (type: Method) => {
+    return {
+      credit: <CreditCard size={16} className="text-brand-purple" />,
+      debit: <Bank size={16} className="text-brand-purple" />,
+      cash: <Money size={16} className="text-brand-purple" />,
+    }[type];
+  };
+
+  const { control, setValue } = useFormContext<CheckoutFormData>();
+
+  const getPaymentMethods = useCallback(async () => {
+    try {
+      const { data } = await mainUrl<PaymentMethods[]>("/payments");
+      setValue("paymentMethod", data[0].id);
+      setPaymentMethods(
+        data.map((method) => ({ ...method, icon: getIcon(method.id) })),
+      );
+    } catch (error) {
+      console.error("Error fetching payment methods:", error);
+    }
+  }, [setValue]);
+
+  useEffect(() => {
+    getPaymentMethods();
+  }, [getPaymentMethods]);
 
   return (
     <Card className="w-full rounded-md bg-base-card dark:border dark:border-base-button">
@@ -53,15 +76,21 @@ export function PaymentCard() {
                 defaultValue={field.value}
                 className="flex w-full flex-col items-center justify-center gap-3 xl:flex-row"
               >
+                {!paymentMethods.length &&
+                  [1, 2, 3].map((item) => (
+                    <Skeleton key={item} className="h-[50px] w-full" />
+                  ))}
+
                 {paymentMethods.map((method) => (
                   <RadioGroupItem
                     value={method.id}
+                    title={method.description}
                     key={method.id}
                     className="flex w-full items-center justify-center gap-3 rounded-md bg-base-button p-4 text-base-text transition-colors hover:bg-base-hover hover:text-base-subtitle data-[state=checked]:border data-[state=checked]:border-brand-purple data-[state=checked]:bg-brand-purple-light data-[state=checked]:text-base-text dark:hover:bg-base-hover dark:hover:text-base-title dark:data-[state=checked]:bg-brand-purple-light dark:data-[state=checked]:text-base-title sm:flex-1"
                   >
                     {method.icon}
                     <div className="mt-[-0.50px] font-text-regular-s text-xs font-[number:var(--components-button-s-font-weight)] leading-[var(--components-button-s-line-height)] tracking-[var(--components-button-s-letter-spacing)] text-base-text dark:text-base-subtitle">
-                      {method.label}
+                      {method.title.toUpperCase()}
                     </div>
                   </RadioGroupItem>
                 ))}
