@@ -2,7 +2,9 @@
 
 Welcome to Coffee Delivery, a modern and responsive e-commerce application for a virtual coffee shop. Users can browse different types of coffee, add items to their cart, and complete their purchase with a seamless checkout process.
 
-![Home](https://github.com/BrunoFgR/ignite2025/tree/main/frontend/challenges/coffee_delivery/public/home.gif)
+<div align="center" style="display: flex; justify-content: center; gap: 1rem">
+  <img src="public/home.gif" alt="Home" />
+</div>
 
 ## 🚀 Technologies
 
@@ -56,8 +58,6 @@ This project is based on the Figma design by Rocketseat:
 - **Shopping Cart** - Add, update, and remove items
 - **Checkout Process** - Complete address and payment information
 - **Order Confirmation** - View order details after purchase
-
-![Cart and Checkout](https://github.com/BrunoFgR/ignite2025/tree/main/frontend/challenges/coffee_delivery/public/checkout.gif)
 
 ## 🚀 Getting Started
 
