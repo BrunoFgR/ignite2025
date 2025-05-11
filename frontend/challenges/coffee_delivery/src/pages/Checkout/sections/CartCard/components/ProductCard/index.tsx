@@ -1,7 +1,7 @@
 import { QuantitySelector } from "@/components/QuantitySelector";
 import { Trash } from "phosphor-react";
 import { Button } from "@/components/ui/button";
-import { CartItem } from "@/reducers/products/reducer";
+import { CartItem } from "@/reducers/cart/reducer";
 import { currencyFormatter } from "@/utils/formatter";
 import { useCartContext } from "@/hooks/useCart";
 import { useCallback } from "react";

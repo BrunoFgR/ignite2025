@@ -1,6 +1,9 @@
 {
   "name": "coffee_delivery",
   "private": true,
+  "description": "Welcome to Coffee Delivery, a modern and responsive e-commerce application for a virtual coffee shop. Users can browse different types of coffee, add items to their cart, and complete their purchase with a seamless checkout process.",
+  "author": "brunoFgR",
+  "license": "MIT",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
