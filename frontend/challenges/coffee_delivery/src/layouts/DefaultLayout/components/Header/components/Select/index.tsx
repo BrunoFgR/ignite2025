@@ -49,17 +49,16 @@ export function Select() {
   return (
     <Root>
       <SelectTrigger
-        className="flex items-center justify-center gap-1 rounded-md bg-brand-purple-light px-2 py-2 text-sm text-brand-purple dark:bg-brand-purple-light dark:text-white md:px-2 md:py-2"
+        className="flex items-center gap-1 rounded-md bg-brand-purple-light px-2 py-2 text-sm text-brand-purple dark:bg-brand-purple-light dark:text-white md:px-2 md:py-2"
         aria-label="city"
         title="Seus endereços"
       >
-        <SelectIcon>
+        <SelectIcon className="inline">
           <MapPin weight="fill" size={16} className="md:size-[22px]" />
         </SelectIcon>
-        <SelectValue
-          placeholder="Meus endereços"
-          className="hidden whitespace-nowrap sm:inline"
-        />
+        <div className="w-[5.5rem] truncate sm:w-36">
+          <SelectValue placeholder="Meus endereços" className="inline" />
+        </div>
       </SelectTrigger>
       <SelectContent
         className="border-purple z-20 rounded-md border bg-white shadow-md dark:border-base-button dark:bg-base-card"

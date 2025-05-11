@@ -9,7 +9,8 @@ import { useCartContext } from "@/hooks/useCart";
 import { useEffect } from "react";
 import { mainUrl } from "@/lib/axios";
 import { useToast } from "@/hooks/useToast";
-import { useNavigate, useNavigation } from "react-router";
+import { useNavigate } from "react-router";
+import { useProductContext } from "@/hooks/useProduct";
 
 const checkoutValidationSchema = z.object({
   address: z.object({
@@ -65,9 +66,15 @@ type OrderResponse = z.infer<typeof checkoutValidationSchema>["items"] & {
   address: AddressResponse;
   id: number;
 };
+interface PaymentResponse {
+  id: number;
+  title: string;
+  description: string;
+}
 
 export function Checkout() {
   const { cart, cleanCart } = useCartContext();
+  const { products, updateList } = useProductContext();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -100,11 +107,29 @@ export function Checkout() {
         "/address",
         formData.address,
       );
+
+      const payment = await mainUrl.get<PaymentResponse>(
+        `/payments/${formData.paymentMethod}`,
+      );
+
       const order = await mainUrl.post<OrderResponse>("/orders", {
-        addressId: address.data,
-        paymentMethod: formData.paymentMethod,
+        address: address.data,
+        paymentMethod: payment.data,
         items: formData.items,
       });
+
+      for (const item of formData.items) {
+        const findProduct = products.find((product) => product.id === item.id);
+
+        if (findProduct) {
+          await mainUrl.put(`/coffees/${item.id}`, {
+            ...findProduct,
+            amount: item.stock - item.quantity,
+          });
+        }
+      }
+
+      await updateList();
 
       cleanCart();
       reset();

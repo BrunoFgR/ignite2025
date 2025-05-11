@@ -18,6 +18,7 @@ interface ProductContextProviderProps {
 
 export interface ProductContextData {
   products: Product[];
+  updateList: () => Promise<void>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -35,12 +36,16 @@ export const ProductContextProvider = ({
     setProducts(data);
   }, []);
 
+  const updateList = useCallback(async () => {
+    await fetchProducts();
+  }, [fetchProducts]);
+
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
 
   return (
-    <ProductContext.Provider value={{ products }}>
+    <ProductContext.Provider value={{ products, updateList }}>
       {children}
     </ProductContext.Provider>
   );

@@ -6,10 +6,8 @@
       "description": "O tradicional café feito com água quente e grãos moídos",
       "price": 9.9,
       "image": "expresso",
-      "tags": [
-        "tradicional"
-      ],
-      "amount": 5
+      "tags": ["tradicional"],
+      "amount": 1
     },
     {
       "id": 2,
@@ -17,9 +15,7 @@
       "description": "Expresso diluído, menos intenso que o tradicional",
       "price": 9.9,
       "image": "americano",
-      "tags": [
-        "tradicional"
-      ],
+      "tags": ["tradicional"],
       "amount": 4
     },
     {
@@ -28,9 +24,7 @@
       "description": "Café expresso tradicional com espuma cremosa",
       "price": 9.9,
       "image": "expresso_cremoso",
-      "tags": [
-        "tradicional"
-      ],
+      "tags": ["tradicional"],
       "amount": 3
     },
     {
@@ -39,11 +33,8 @@
       "description": "Bebida preparada com café expresso e cubos de gelo",
       "price": 9.9,
       "image": "cafe_gelado",
-      "tags": [
-        "tradicional",
-        "gelado"
-      ],
-      "amount": 4
+      "tags": ["tradicional", "gelado"],
+      "amount": 3
     },
     {
       "id": 5,
@@ -51,10 +42,7 @@
       "description": "Meio a meio de expresso tradicional com leite vaporizado",
       "price": 9.9,
       "image": "cafe_com_leite",
-      "tags": [
-        "tradicional",
-        "com leite"
-      ],
+      "tags": ["tradicional", "com leite"],
       "amount": 1
     },
     {
@@ -63,11 +51,8 @@
       "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
       "price": 9.9,
       "image": "latte",
-      "tags": [
-        "tradicional",
-        "com leite"
-      ],
-      "amount": 1
+      "tags": ["tradicional", "com leite"],
+      "amount": 0
     },
     {
       "id": 7,
@@ -75,10 +60,7 @@
       "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
       "price": 9.9,
       "image": "capuccino",
-      "tags": [
-        "tradicional",
-        "com leite"
-      ],
+      "tags": ["tradicional", "com leite"],
       "amount": 2
     },
     {
@@ -87,11 +69,8 @@
       "description": "Café expresso misturado com um pouco de leite quente e espuma",
       "price": 9.9,
       "image": "macchiato",
-      "tags": [
-        "tradicional",
-        "com leite"
-      ],
-      "amount": 4
+      "tags": ["tradicional", "com leite"],
+      "amount": 3
     },
     {
       "id": 9,
@@ -99,10 +78,7 @@
       "description": "Café expresso com calda de chocolate, pouco leite e espuma",
       "price": 9.9,
       "image": "mochaccino",
-      "tags": [
-        "tradicional",
-        "com leite"
-      ],
+      "tags": ["tradicional", "com leite"],
       "amount": 2
     },
     {
@@ -111,10 +87,7 @@
       "description": "Bebida feita com chocolate dissolvido no leite quente e café",
       "price": 9.9,
       "image": "chocolate_quente",
-      "tags": [
-        "especial",
-        "com leite"
-      ],
+      "tags": ["especial", "com leite"],
       "amount": 5
     },
     {
@@ -123,11 +96,7 @@
       "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
       "price": 9.9,
       "image": "cubano",
-      "tags": [
-        "especial",
-        "alcoólico",
-        "gelado"
-      ],
+      "tags": ["especial", "alcoólico", "gelado"],
       "amount": 2
     },
     {
@@ -136,9 +105,7 @@
       "description": "Bebida adocicada preparada com café e leite de coco",
       "price": 9.9,
       "image": "havaiano",
-      "tags": [
-        "especial"
-      ],
+      "tags": ["especial"],
       "amount": 4
     },
     {
@@ -147,9 +114,7 @@
       "description": "Bebida preparada com grãos de café árabe e especiarias",
       "price": 9.9,
       "image": "arabe",
-      "tags": [
-        "especial"
-      ],
+      "tags": ["especial"],
       "amount": 7
     },
     {
@@ -158,11 +123,8 @@
       "description": "Bebida a base de café, uísque irlandês, leite e chantilly",
       "price": 9.9,
       "image": "irlandes",
-      "tags": [
-        "especial",
-        "alcoólico"
-      ],
-      "amount": 2
+      "tags": ["especial", "alcoólico"],
+      "amount": 0
     }
   ],
   "payments": [
@@ -182,66 +144,6 @@
       "description": "Pagamento com dinheiro"
     }
   ],
-  "address": [
-    {
-      "cep": "04859-310",
-      "street": "Rua Lasar Segall",
-      "number": "33",
-      "complement": "",
-      "neighborhood": "Jardim Alvorada (Zona Sul)",
-      "city": "São Paulo",
-      "uf": "SP",
-      "id": 1
-    }
-  ],
-  "orders": [
-    {
-      "addressId": {
-        "cep": "04859-310",
-        "street": "Rua Lasar Segall",
-        "number": "33",
-        "complement": "",
-        "neighborhood": "Jardim Alvorada (Zona Sul)",
-        "city": "São Paulo",
-        "uf": "SP",
-        "id": 1
-      },
-      "paymentMethod": "debit",
-      "items": [
-        {
-          "id": 10,
-          "title": "Chocolate Quente",
-          "price": 9.9,
-          "quantity": 3,
-          "stock": 5,
-          "image": "chocolate_quente"
-        },
-        {
-          "id": 1,
-          "title": "Expresso Tradicional",
-          "price": 9.9,
-          "quantity": 2,
-          "stock": 5,
-          "image": "expresso"
-        },
-        {
-          "id": 7,
-          "title": "Capuccino",
-          "price": 9.9,
-          "quantity": 1,
-          "stock": 2,
-          "image": "capuccino"
-        },
-        {
-          "id": 11,
-          "title": "Cubano",
-          "price": 9.9,
-          "quantity": 1,
-          "stock": 2,
-          "image": "cubano"
-        }
-      ],
-      "id": 1
-    }
-  ]
+  "address": [],
+  "orders": []
 }
