@@ -1,5 +1,5 @@
-import { Button } from "./components/ui/button";
-import "./global.css";
+import { Button } from './components/ui/button'
+import './global.css'
 
 export function App() {
   return (
@@ -8,5 +8,5 @@ export function App() {
       <p className="text-xl text-gray-600">Welcome to our pizza shop!</p>
       <Button>Enviar</Button>
     </div>
-  );
+  )
 }
