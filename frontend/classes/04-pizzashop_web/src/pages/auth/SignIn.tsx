@@ -1,7 +1,10 @@
+import { Helmet } from '@dr.pogodin/react-helmet'
+
 export function SignIn() {
   return (
-    <div>
+    <>
+      <Helmet title="Login" />
       <h1>Sign In</h1>
-    </div>
-  );
+    </>
+  )
 }
