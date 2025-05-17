@@ -1,9 +1,9 @@
-import { Pizza } from 'lucide-react'
-import { Outlet } from 'react-router'
+import { Pizza } from "lucide-react";
+import { Outlet } from "react-router";
 
 export function AuthLayout() {
   return (
-    <div className="grid min-h-screen grid-cols-2">
+    <div className="grid min-h-screen grid-cols-2 antialiased">
       <div className="border-foreground/5 bg-muted text-muted-foreground flex w-full flex-col justify-between p-10">
         <div className="text-foreground flex items-center gap-3 text-lg">
           <Pizza className="h-5 w-5" />
@@ -18,5 +18,5 @@ export function AuthLayout() {
         <Outlet />
       </div>
     </div>
-  )
+  );
 }
