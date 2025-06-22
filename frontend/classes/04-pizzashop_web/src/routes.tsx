@@ -8,12 +8,13 @@ import { NotFound } from './pages/404'
 import { Dashboard } from './pages/app/dashboard'
 import { Orders } from './pages/app/orders'
 import { SignUp } from './pages/auth/sign-up'
+import { Error } from './pages/error'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     Component: AppLayout,
-    errorElement: <NotFound />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',
@@ -38,5 +39,9 @@ export const router = createBrowserRouter([
         Component: SignUp,
       },
     ],
+  },
+  {
+    path: '*',
+    Component: NotFound,
   },
 ])
