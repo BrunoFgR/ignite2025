@@ -6,7 +6,7 @@ export default mergeConfig(
   defineConfig({
     test: {
       globals: true,
-      setupFiles: ["./test/setup.ts"],
+      setupFiles: ["./test/vitest.setup.ts"],
       environment: "happy-dom",
     },
   }),
